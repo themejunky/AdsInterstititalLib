@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="black">#000</color>
+    <color name="white">#fff</color>
+
+
+    <!-- MainActivity -->
+    <color name="home_carouse_bg">@android:color/transparent</color>
+
+    <!-- Loading layout -->
+    <color name="loading_text_grey">#585757</color>
+
+    <!-- Main Screen layout -->
+    <color name="buttons_color">#2fc20d</color>
+    <color name="buttons_green_color">#2fc20d</color>
+    <color name="buttons_blue_color">#2e6af1</color>
+
+    <color name="loading">#ffba1a</color>
+
+    <color name="transparent_tm">#00ffffff</color>
+
+</resources>
