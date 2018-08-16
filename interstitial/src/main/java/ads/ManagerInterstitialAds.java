@@ -33,6 +33,7 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
     private ListenerContract.NoAdsLoaded noAdsLoadedListener;
     private int nrAdsManagers;
     private List<String> flow = new ArrayList<>();
+    private android.app.AlertDialog mDialog;
 
     public static synchronized ManagerInterstitialAds getInstance(Context context, String tagName) {
         if (instance == null) {
@@ -59,7 +60,7 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
         TextView textView =  dialog.findViewById(R.id.loadingText);
         textView.setText(textLoading);
         alertDialog.setView(dialog);
-        final android.app.AlertDialog mDialog = alertDialog.create();
+        mDialog  = alertDialog.create();
         mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         ThreeBounce threeBounce = new ThreeBounce();
         threeBounce.setBounds(0, 0, 100, 100);
@@ -153,7 +154,7 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
 
 
     public void showInterstitial() {
-        Log.d(tagName, "showInterstitial.........");
+        mDialog.dismiss();
         if (flow != null && action != null) {
             part1Interstitial();
         }
