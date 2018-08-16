@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.github.ybq.android.spinkit.style.ThreeBounce;
 
@@ -28,12 +29,8 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
     private int next;
     private static List<String> addsFlowInterstitial = new ArrayList<>();
     private ListenerContract.ReloadInterstitial reloadedListener;
-    private boolean somethingIsLoaded;
-    private boolean isReloaded;
-    private List<String> flowAds;
     private String action = "testAction";
     private AppnextAdsInterstitial appnextInterstitialAds;
-    private int nrAdsManagers;
     private List<String> whatIsLoaded = new ArrayList<>();
     private ListenerContract.NoAdsLoaded noAdsLoadedListener;
 
@@ -51,13 +48,15 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
     }
 
 
-    public void showInterstitialLoading(Context context, int timeLoadinMillisec, final String action){
+    public void showInterstitialLoading(Context context, int timeLoadinMillisec, final String action,String textLoading){
         this.action = action;
         Log.d(tagName,"showInterstitialLoading");
         final android.app.AlertDialog.Builder alertDialog = new android.app.AlertDialog.Builder( context );
         LayoutInflater factory = LayoutInflater.from(context);
         View dialog = factory.inflate(R.layout.activity_loading_screen, null);
         ImageView imageView = (ImageView) dialog.findViewById(R.id.imageTest);
+        TextView textView =  dialog.findViewById(R.id.loadingText);
+        textView.setText(textLoading);
         alertDialog.setView(dialog);
         final android.app.AlertDialog mDialog = alertDialog.create();
         mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -170,22 +169,31 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
         if (next < addsFlowInterstitial.size()) {
             switch (addsFlowInterstitial.get(next)) {
                 case "admob":
+                    Log.d(tagName, "Flow Interstitial: ---Admob 1 ---");
                     if (admobInterstitialAds!=null && admobInterstitialAds.isLoadedAdmob()) {
+                        Log.d(tagName, "Flow Interstitial: ---Admob 2 ---");
                         admobInterstitialAds.showInterstitialAdmob();
+                        Log.d(tagName, "Flow Interstitial: ---Admob 3 ---");
                     } else {
                         runAdds_Part2Interstitial();
                     }
                     break;
                 case "facebook":
+                    Log.d(tagName, "Flow Interstitial: ---Facebook 1 ---");
                     if (facebookInterstitialAdsInterstitial!=null &&facebookInterstitialAdsInterstitial.isFacebookLoaded()) {
+                        Log.d(tagName, "Flow Interstitial: ---Facebook 2 ---");
                         facebookInterstitialAdsInterstitial.showInterstitialFacebook();
+                        Log.d(tagName, "Flow Interstitial: ---Facebook 3 ---");
                     } else {
                         runAdds_Part2Interstitial();
                     }
                     break;
                 case "appnext":
+                    Log.d(tagName, "Flow Interstitial: ---Appnext 1 ---");
                     if (appnextInterstitialAds!=null &&appnextInterstitialAds.isLoadedAppNext()) {
+                        Log.d(tagName, "Flow Interstitial: ---Appnext 2 ---");
                         appnextInterstitialAds.showAppNext();
+                        Log.d(tagName, "Flow Interstitial: ---Appnext 3 ---");
                     } else {
                         runAdds_Part2Interstitial();
                     }
