@@ -27,12 +27,12 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
     private final Context context;
     private ListenerContract.AdsInterstitialListener listener;
     private int next;
-    private static List<String> addsFlowInterstitial = new ArrayList<>();
     private String action = "testAction";
     private AppnextAdsInterstitial appnextInterstitialAds;
     private List<String> whatIsLoaded = new ArrayList<>();
     private ListenerContract.NoAdsLoaded noAdsLoadedListener;
     private int nrAdsManagers;
+    private List<String> flow = new ArrayList<>();
 
     public static synchronized ManagerInterstitialAds getInstance(Context context, String tagName) {
         if (instance == null) {
@@ -48,8 +48,9 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
     }
 
 
-    public void showInterstitialLoading(Context context, int timeLoadinMillisec, final String action,String textLoading){
+    public void showInterstitialLoading(Context context, int timeLoadinMillisec, final String action,String textLoading,List<String> flow){
         this.action = action;
+        this.flow = flow;
         Log.d(tagName,"showInterstitialLoading");
         final android.app.AlertDialog.Builder alertDialog = new android.app.AlertDialog.Builder( context );
         LayoutInflater factory = LayoutInflater.from(context);
@@ -127,19 +128,23 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
         isSomeAdLoaded(whatIsLoaded);
         Log.d(tagName,"somethingReloaded: " + whatIsLoaded);
         nrAdsManagers++;
-        if(addsFlowInterstitial!=null){
-            Log.d(tagName,"Flow is not NULL");
-            if(whatIsLoaded.equals(addsFlowInterstitial.get(0))){
-                showInterstitial(addsFlowInterstitial);
-            }else {
-                new android.os.Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        showInterstitial(addsFlowInterstitial);
-                    }
-                },2000);
+        if(flow!=null){
+            try {
+                if(whatIsLoaded.equals(flow.get(0))){
+                    showInterstitial();
+                }else {
+                    new android.os.Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            showInterstitial();
+                        }
+                    },2000);
 
+                }
+            }catch (Exception e){
+                Log.d(tagName,"Exception: " + e.getMessage());
             }
+
         }else {
             Log.d(tagName,"Flow is NULL");
         }
@@ -147,9 +152,9 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
     }
 
 
-    public void showInterstitial(List<String> flow) {
+    public void showInterstitial() {
+        Log.d(tagName, "showInterstitial.........");
         if (flow != null && action != null) {
-            addsFlowInterstitial = flow;
             part1Interstitial();
         }
 
@@ -175,8 +180,8 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
 
     public void runAdds_Part2Interstitial() {
         next++;
-        if (next < addsFlowInterstitial.size()) {
-            switch (addsFlowInterstitial.get(next)) {
+        if (next < flow.size()) {
+            switch (flow.get(next)) {
                 case "admob":
                     Log.d(tagName, "Flow Interstitial: ---Admob 1 ---");
                     if (admobInterstitialAds!=null && admobInterstitialAds.isLoadedAdmob()) {
