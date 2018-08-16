@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
 
     public ManagerInterstitialAds managerInterstitialAds;
 
-    private List<String> flow = Arrays.asList("facebook","admob");
+    private List<String> flow = Arrays.asList("admob","appnext");
     private boolean somethingIsLoaded;
     private boolean isReloaded;
     private int nrAdsManagers=0;
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
 
     public void onClick(View view) {
      //  managerInterstitialAds.requestNewInterstitial(this,flow,"intro");
-        managerInterstitialAds.showInterstitialLoading(this,false,5000,"intro","Loading Wallpaper...",flow);
+        managerInterstitialAds.showInterstitialLoading(this,true,5000,"intro","Loading Wallpaper...",flow);
     }
 
 

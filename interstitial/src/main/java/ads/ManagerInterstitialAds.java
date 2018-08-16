@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +16,7 @@ import com.github.ybq.android.spinkit.style.ThreeBounce;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Handler;
+
 
 import themejunky.com.interstitial.R;
 
@@ -34,6 +35,8 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
     private int nrAdsManagers;
     private List<String> flow = new ArrayList<>();
     private android.app.AlertDialog mDialog;
+    private boolean addShowed;
+    private int relaoded;
 
     public static synchronized ManagerInterstitialAds getInstance(Context context, String tagName) {
         if (instance == null) {
@@ -127,23 +130,40 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
     }
 
     @Override
-    public void somethingReloaded(String whatIsLoaded) {
+    public void somethingReloaded(final String whatIsLoaded) {
         isSomeAdLoaded(whatIsLoaded);
         Log.d(tagName,"somethingReloaded: " + whatIsLoaded);
         nrAdsManagers++;
         if(flow!=null){
             try {
-                if(whatIsLoaded.equals(flow.get(0))){
-                    showInterstitial();
-                }else {
-                    new android.os.Handler().postDelayed(new Runnable() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(whatIsLoaded.equals(flow.get(0))){
+                            Log.d(tagName,"somethingReloaded: 1");
+                            showInterstitial();
+                        }else {
+                            Log.d(tagName,"somethingReloaded: 1.1");
+                            relaoded++;
+                            somethingReloaded(whatIsLoaded);
+                        }
+                    }
+                },1500);
+                if(relaoded==1){
+                    new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            showInterstitial();
+                            if(whatIsLoaded.equals(flow.get(0))){
+                                Log.d(tagName,"somethingReloaded: 2");
+                                showInterstitial();
+                            }else {
+                                Log.d(tagName,"somethingReloaded: 2.1");
+                                showInterstitial();
+                            }
                         }
-                    },2000);
-
+                    },1500);
                 }
+
             }catch (Exception e){
                 Log.d(tagName,"Exception: " + e.getMessage());
             }
@@ -153,6 +173,39 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
         }
 
     }
+
+    /*@Override
+    public void somethingReloaded(String whatIsLoaded) {
+        isSomeAdLoaded(whatIsLoaded);
+
+        Log.d(tagName,"somethingReloaded: " + whatIsLoaded);
+        nrAdsManagers++;
+        if(flow!=null){
+            try {
+                if(whatIsLoaded.equals(flow.get(0))){
+                    Log.d(tagName,"somethingReloaded: if");
+                    showInterstitial();
+                }else {
+                    Log.d(tagName,"somethingReloaded: else");
+                    new android.os.Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.d(tagName,"somethingReloaded: else 2");
+                            // showInterstitial();
+                        }
+                    },2000);
+
+                }
+
+            }catch (Exception e){
+                Log.d(tagName,"Exception: " + e.getMessage());
+            }
+
+        }else {
+            Log.d(tagName,"Flow is NULL");
+        }
+
+    }*/
 
 
     public void showInterstitial() {
