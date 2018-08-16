@@ -127,18 +127,23 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
         isSomeAdLoaded(whatIsLoaded);
         Log.d(tagName,"somethingReloaded: " + whatIsLoaded);
         nrAdsManagers++;
-        final List<String> flow = addsFlowInterstitial;
-        if(whatIsLoaded.equals(flow.get(0))){
-            showInterstitial(flow);
-        }else {
-            new android.os.Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    showInterstitial(flow);
-                }
-            },2000);
+        if(addsFlowInterstitial!=null){
+            Log.d(tagName,"Flow is not NULL");
+            if(whatIsLoaded.equals(addsFlowInterstitial.get(0))){
+                showInterstitial(addsFlowInterstitial);
+            }else {
+                new android.os.Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        showInterstitial(addsFlowInterstitial);
+                    }
+                },2000);
 
+            }
+        }else {
+            Log.d(tagName,"Flow is NULL");
         }
+
     }
 
 
