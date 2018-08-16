@@ -28,7 +28,6 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
     private ListenerContract.AdsInterstitialListener listener;
     private int next;
     private static List<String> addsFlowInterstitial = new ArrayList<>();
-    private ListenerContract.ReloadInterstitial reloadedListener;
     private String action = "testAction";
     private AppnextAdsInterstitial appnextInterstitialAds;
     private List<String> whatIsLoaded = new ArrayList<>();
@@ -142,9 +141,6 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
         }
     }
 
-    public void setReloadedListener(ListenerContract.ReloadInterstitial reloadedListener){
-        this.reloadedListener = reloadedListener;
-    }
 
     public void showInterstitial(List<String> flow) {
         if (flow != null && action != null) {
