@@ -19,7 +19,7 @@ import java.util.logging.Handler;
 
 import themejunky.com.interstitial.R;
 
-public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern,ListenerContract.ReloadInterstitial {
+public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern {
     private static ManagerInterstitialAds instance;
     private FacebookInterstitialAds facebookInterstitialAdsInterstitial;
     private AdmobInterstitialAds admobInterstitialAds;
@@ -127,11 +127,18 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern,
     public void somethingReloaded(String whatIsLoaded) {
         isSomeAdLoaded(whatIsLoaded);
         Log.d(tagName,"somethingReloaded: " + whatIsLoaded);
-        if(reloadedListener!=null){
-            Log.d(tagName,"reloadedListener: nu este null");
-            reloadedListener.reloadedInterstitial(whatIsLoaded);
+        nrAdsManagers++;
+        final List<String> flow = addsFlowInterstitial;
+        if(whatIsLoaded.equals(flow.get(0))){
+            showInterstitial(flow);
         }else {
-            Log.d(tagName,"reloadedListener: Este null");
+            new android.os.Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    showInterstitial(flow);
+                }
+            },2000);
+
         }
     }
 
@@ -215,39 +222,4 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern,
         return whatIsLoaded;
     }
 
-
-    @Override
-    public void reloadedInterstitial(final String whatIsLoaded) {
-        nrAdsManagers++;
-        final List<String> flow = addsFlowInterstitial;
-        Log.d("testLogAds","whatIsLoaded: " + whatIsLoaded);
-        Log.d("testLogAds","flow.get(0): " + flow.get(0));
-        Log.d("testLogAds","nrAdsManagers: " + nrAdsManagers);
-        if(whatIsLoaded.equals(flow.get(0))){
-            Log.d("testLogAds","if");
-            showInterstitial(flow);
-        }else {
-            Log.d("testLogAds","else");
-            new android.os.Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    showInterstitial(flow);
-                }
-            },2000);
-
-        }
-
-    }
-
-   /* @Override
-    public void reloadedInterstitial(String whatIsLoaded) {
-        isSomeAdLoaded(whatIsLoaded);
-        Log.d(tagName, "reloadedInterstitial - showInterstitial");
-        nrAdsManagers++;
-        if(whatIsLoaded.equals(flowAds.get(0))){
-            showInterstitial(flowAds);
-        }else if(nrAdsManagers==2) {
-            showInterstitial(flowAds);
-        }
-    }*/
 }

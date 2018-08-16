@@ -14,9 +14,6 @@ public class ListenerContract {
         void afterInterstitialIsClosed(String action);
     }
 
-    public interface ReloadInterstitial{
-        void reloadedInterstitial(String whatIsLoaded);
-    }
     public interface NoAdsLoaded{
         void noAdsLoaded(String action);
     }
