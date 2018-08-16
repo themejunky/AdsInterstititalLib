@@ -49,7 +49,7 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
     }
 
 
-    public void showInterstitialLoading(Context context, int timeLoadinMillisec, final String action,String textLoading,List<String> flow){
+    public void showInterstitialLoading(Context context,boolean isShowLoading ,int timeLoadinMillisec, final String action,String textLoading,List<String> flow){
         this.action = action;
         this.flow = flow;
         Log.d(tagName,"showInterstitialLoading");
@@ -67,7 +67,9 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
         threeBounce.setColor(Color.CYAN);
         imageView.setImageDrawable(threeBounce);
         threeBounce.start();
-        mDialog.show();
+        if(isShowLoading){
+            mDialog.show();
+        }
 
         requestNewInterstitial();
 
