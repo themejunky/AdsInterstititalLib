@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import ads.ListenerContract;
 import ads.ManagerInterstitialAds;
-public class MainActivity extends AppCompatActivity implements ListenerContract.ReloadInterstitial,ListenerContract.AdsInterstitialListener, ListenerContract.NoAdsLoaded {
+public class MainActivity extends AppCompatActivity implements ListenerContract.AdsInterstitialListener, ListenerContract.NoAdsLoaded {
 
     public ManagerInterstitialAds managerInterstitialAds;
 
@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
         managerInterstitialAds.initAdmob("ca-app-pub-5322508131338449/28774442111");
         managerInterstitialAds.initAppnext("aacbb73a-09b8-455d-b9d8-1d246d5a2cb44");
         managerInterstitialAds.setInterstitialAdsListener(this);
-        managerInterstitialAds.setReloadedListener(this);
         managerInterstitialAds.setNoAdsLoadedListener(this);
 
     }
@@ -48,17 +47,6 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
         }
     }
 
-
-    @Override
-    public void reloadedInterstitial(String whatIsLoaded) {
-        nrAdsManagers++;
-        if(whatIsLoaded.equals(flow.get(0))){
-            managerInterstitialAds.showInterstitial(flow);
-        }else if(nrAdsManagers==2) {
-            managerInterstitialAds.showInterstitial(flow);
-        }
-
-    }
 
     @Override
     public void noAdsLoaded(String action) {

@@ -19,7 +19,7 @@ import java.util.logging.Handler;
 
 import themejunky.com.interstitial.R;
 
-public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern {
+public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern,ListenerContract.ReloadInterstitial {
     private static ManagerInterstitialAds instance;
     private FacebookInterstitialAds facebookInterstitialAdsInterstitial;
     private AdmobInterstitialAds admobInterstitialAds;
@@ -33,6 +33,7 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
     private AppnextAdsInterstitial appnextInterstitialAds;
     private List<String> whatIsLoaded = new ArrayList<>();
     private ListenerContract.NoAdsLoaded noAdsLoadedListener;
+    private int nrAdsManagers;
 
     public static synchronized ManagerInterstitialAds getInstance(Context context, String tagName) {
         if (instance == null) {
@@ -212,6 +213,30 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
         whatIsLoaded.add(reloadedList);
         Log.d(tagName, "isSomeAdLoaded: " + reloadedList);
         return whatIsLoaded;
+    }
+
+
+    @Override
+    public void reloadedInterstitial(final String whatIsLoaded) {
+        nrAdsManagers++;
+        final List<String> flow = addsFlowInterstitial;
+        Log.d("testLogAds","whatIsLoaded: " + whatIsLoaded);
+        Log.d("testLogAds","flow.get(0): " + flow.get(0));
+        Log.d("testLogAds","nrAdsManagers: " + nrAdsManagers);
+        if(whatIsLoaded.equals(flow.get(0))){
+            Log.d("testLogAds","if");
+            showInterstitial(flow);
+        }else {
+            Log.d("testLogAds","else");
+            new android.os.Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    showInterstitial(flow);
+                }
+            },2000);
+
+        }
+
     }
 
    /* @Override
