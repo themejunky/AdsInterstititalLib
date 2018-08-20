@@ -142,14 +142,15 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
                         if(whatIsLoaded.equals(flow.get(0))){
                             Log.d(tagName,"somethingReloaded: 1");
                             showInterstitial();
-                        }else {
+                        }else if(relaoded==0) {
                             Log.d(tagName,"somethingReloaded: 1.1");
                             relaoded++;
                             somethingReloaded(whatIsLoaded);
                         }
                     }
                 },1500);
-                if(relaoded==1){
+
+                if(relaoded == 1){
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -173,39 +174,6 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
         }
 
     }
-
-    /*@Override
-    public void somethingReloaded(String whatIsLoaded) {
-        isSomeAdLoaded(whatIsLoaded);
-
-        Log.d(tagName,"somethingReloaded: " + whatIsLoaded);
-        nrAdsManagers++;
-        if(flow!=null){
-            try {
-                if(whatIsLoaded.equals(flow.get(0))){
-                    Log.d(tagName,"somethingReloaded: if");
-                    showInterstitial();
-                }else {
-                    Log.d(tagName,"somethingReloaded: else");
-                    new android.os.Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Log.d(tagName,"somethingReloaded: else 2");
-                            // showInterstitial();
-                        }
-                    },2000);
-
-                }
-
-            }catch (Exception e){
-                Log.d(tagName,"Exception: " + e.getMessage());
-            }
-
-        }else {
-            Log.d(tagName,"Flow is NULL");
-        }
-
-    }*/
 
 
     public void showInterstitial() {
