@@ -265,29 +265,34 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
         }
 
         for (int i = 0; i < whatIsLoaded.size(); i++) {
-            if (priority != 0) {
-                if (whatIsLoaded.get(i).equals(flow.get(0))) {
-                    //Log.d(tagName, "ahaha " + whatIsLoaded.get(i) + " is pos 0");
-                    stringLoaded = whatIsLoaded.get(i);
-                    priority = 0;
-                }
-
-                if (priority != 1) {
-                    if (whatIsLoaded.get(i).equals(flow.get(1))) {
-                        //Log.d(tagName, "ahaha " + whatIsLoaded.get(i) + " is pos 1");
+            try{
+                if (priority != 0) {
+                    if (whatIsLoaded.get(i).equals(flow.get(0))) {
+                        //Log.d(tagName, "ahaha " + whatIsLoaded.get(i) + " is pos 0");
                         stringLoaded = whatIsLoaded.get(i);
-                        priority = 1;
+                        priority = 0;
                     }
 
-                    if (priority != 2) {
-                        if (whatIsLoaded.get(i).equals(flow.get(2))) {
-                            //Log.d(tagName, "ahaha " + whatIsLoaded.get(i) + " is pos 2");
+                    if (priority != 1) {
+                        if (whatIsLoaded.get(i).equals(flow.get(1))) {
+                            //Log.d(tagName, "ahaha " + whatIsLoaded.get(i) + " is pos 1");
                             stringLoaded = whatIsLoaded.get(i);
-                            priority = 2;
+                            priority = 1;
+                        }
+
+                        if (priority != 2) {
+                            if (whatIsLoaded.get(i).equals(flow.get(2))) {
+                                //Log.d(tagName, "ahaha " + whatIsLoaded.get(i) + " is pos 2");
+                                stringLoaded = whatIsLoaded.get(i);
+                                priority = 2;
+                            }
                         }
                     }
                 }
+            }catch (Exception e){
+                Log.d(tagName, "error: "+e.getMessage());
             }
+
         }
 
         Log.d(tagName, "whatIsLoaded"+whatIsLoaded+" flow "+flow+" higher priority ad is "+stringLoaded);
