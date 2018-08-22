@@ -1,8 +1,6 @@
 package ads;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
@@ -17,8 +15,8 @@ import com.github.ybq.android.spinkit.style.ThreeBounce;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import themejunky.com.interstitial.R;
+
 
 public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern {
     private static ManagerInterstitialAds instance;
@@ -32,11 +30,11 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
     private AppnextAdsInterstitial appnextInterstitialAds;
     private List<String> whatIsLoaded = new ArrayList<>();
     private ListenerContract.NoAdsLoaded noAdsLoadedListener;
-    private int nrAdsManagers;
     private List<String> flow = new ArrayList<>();
-    private android.app.AlertDialog mDialog;
-    private boolean addShowed;
-    private int relaoded;
+    private android.app.AlertDialog mDialog;;
+    private int count;
+    private int priority = 100;
+    private String stringLoaded;
 
     public static synchronized ManagerInterstitialAds getInstance(Context context, String tagName) {
         if (instance == null) {
@@ -80,10 +78,10 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
             @Override
             public void run() {
                 mDialog.dismiss();
-                Log.d(tagName,"showInterstitialLoading: " + whatIsLoaded.size());
-                    if(noAdsLoadedListener!=null && whatIsLoaded.size()<1){
-                        noAdsLoadedListener.noAdsLoaded(action);
-                    }
+                Log.d(tagName,"showInterstitialLoading: " + whatIsLoaded.size()+" whatIsLoaded "+whatIsLoaded);
+                if(noAdsLoadedListener!=null && whatIsLoaded.size()<1){
+                    noAdsLoadedListener.noAdsLoaded(action);
+                }
 
             }
         },timeLoadinMillisec);
@@ -132,57 +130,71 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
     @Override
     public void somethingReloaded(final String whatIsLoaded) {
         isSomeAdLoaded(whatIsLoaded);
-        Log.d(tagName,"somethingReloaded: " + whatIsLoaded);
-        nrAdsManagers++;
-        if(flow!=null){
-            try {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(whatIsLoaded.equals(flow.get(0))){
-                            Log.d(tagName,"somethingReloaded: 1");
-                            showInterstitial();
-                        }else if(relaoded==0) {
-                            Log.d(tagName,"somethingReloaded: 1.1");
-                            relaoded++;
-                            somethingReloaded(whatIsLoaded);
+        count++;
+        Log.d("isSomeAdLoaded", "count "+count);
+        if (count==1) {
+            Log.d("isSomeAdLoaded", "wait 3 sec");
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Log.d(tagName, "showInterstitial " + isSomeAdLoaded(whatIsLoaded));
+                    if (flow != null) {
+                        if (flow.contains(isSomeAdLoaded(whatIsLoaded))) {
+                            showInterstitial(""+isSomeAdLoaded(whatIsLoaded));
+                            count = 0;
                         }
+                    } else {
+                        Log.d(tagName,"Flow is NULL");
                     }
-                },1500);
-
-                if(relaoded == 1){
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            if(whatIsLoaded.equals(flow.get(0))){
-                                Log.d(tagName,"somethingReloaded: 2");
-                                showInterstitial();
-                            }else {
-                                Log.d(tagName,"somethingReloaded: 2.1");
-                                showInterstitial();
-                            }
-                        }
-                    },1500);
                 }
+            }, 3000);
+        }
+    }
 
-            }catch (Exception e){
-                Log.d(tagName,"Exception: " + e.getMessage());
+    public void showInterstitial(String theAd) {
+        mDialog.dismiss();
+        if (flow != null) {
+            Log.d(tagName,"theAd "+theAd);
+            if (theAd.equals("admob")){
+                Log.d(tagName, "Flow Interstitial: ---Admob 1 ---");
+                if (admobInterstitialAds!=null && admobInterstitialAds.isLoadedAdmob()) {
+                    Log.d(tagName, "Flow Interstitial: ---Admob 2 ---");
+                    admobInterstitialAds.showInterstitialAdmob();
+                    Log.d(tagName, "Flow Interstitial: ---Admob 3 ---");
+                } else {
+                    Log.d(tagName, "Flow Interstitial: ---Admob 4 is null or not loaded");
+                }
+            } else if (theAd.equals("appnext")) {
+                Log.d(tagName, "Flow Interstitial: ---Appnext 1 ---");
+                if (appnextInterstitialAds!=null &&appnextInterstitialAds.isLoadedAppNext()) {
+                    Log.d(tagName, "Flow Interstitial: ---Appnext 2 ---");
+                    appnextInterstitialAds.showAppNext();
+                    Log.d(tagName, "Flow Interstitial: ---Appnext 3 ---");
+                } else {
+                    Log.d(tagName, "Flow Interstitial: ---Appnext 4 is null or not loaded");
+                }
+            } else if (theAd.equals("facebook")) {
+                Log.d(tagName, "Flow Interstitial: ---Facebook 1 ---");
+                if (facebookInterstitialAdsInterstitial!=null &&facebookInterstitialAdsInterstitial.isFacebookLoaded()) {
+                    Log.d(tagName, "Flow Interstitial: ---Facebook 2 ---");
+                    facebookInterstitialAdsInterstitial.showInterstitialFacebook();
+                    Log.d(tagName, "Flow Interstitial: ---Facebook 3 ---");
+                } else {
+                    Log.d(tagName, "Flow Interstitial: ---Facebook 4 is null or not loaded");
+                }
             }
-
-        }else {
-            Log.d(tagName,"Flow is NULL");
         }
 
     }
 
-
+    /*
     public void showInterstitial() {
         mDialog.dismiss();
         if (flow != null && action != null) {
             part1Interstitial();
         }
-
     }
+    */
 
     private void part1Interstitial() {
         next = -1;
@@ -193,10 +205,10 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
         if(admobInterstitialAds!=null){
             admobInterstitialAds.requestNewInterstitialAdmob();
         }
-        if( facebookInterstitialAdsInterstitial!=null){
+        if(facebookInterstitialAdsInterstitial!=null){
             facebookInterstitialAdsInterstitial.requestNewInterstitialFacebook();
         }
-        if( appnextInterstitialAds!=null){
+        if(appnextInterstitialAds!=null){
             appnextInterstitialAds.requestNewInterstitialAppnext();
         }
 
@@ -245,11 +257,41 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
 
 
 
-    public List<String> isSomeAdLoaded(String reloadedList) {
-       whatIsLoaded = new ArrayList<>();
-        whatIsLoaded.add(reloadedList);
-        Log.d(tagName, "isSomeAdLoaded: " + reloadedList);
-        return whatIsLoaded;
+    public String isSomeAdLoaded(String theAd) {
+        if (!whatIsLoaded.contains(theAd)) {
+            whatIsLoaded.add(theAd);
+        } else {
+            //do nothing, ad already loaded
+        }
+
+        for (int i = 0; i < whatIsLoaded.size(); i++) {
+            if (priority != 0) {
+                if (whatIsLoaded.get(i).equals(flow.get(0))) {
+                    //Log.d(tagName, "ahaha " + whatIsLoaded.get(i) + " is pos 0");
+                    stringLoaded = whatIsLoaded.get(i);
+                    priority = 0;
+                }
+
+                if (priority != 1) {
+                    if (whatIsLoaded.get(i).equals(flow.get(1))) {
+                        //Log.d(tagName, "ahaha " + whatIsLoaded.get(i) + " is pos 1");
+                        stringLoaded = whatIsLoaded.get(i);
+                        priority = 1;
+                    }
+
+                    if (priority != 2) {
+                        if (whatIsLoaded.get(i).equals(flow.get(2))) {
+                            //Log.d(tagName, "ahaha " + whatIsLoaded.get(i) + " is pos 2");
+                            stringLoaded = whatIsLoaded.get(i);
+                            priority = 2;
+                        }
+                    }
+                }
+            }
+        }
+
+        Log.d(tagName, "whatIsLoaded"+whatIsLoaded+" flow "+flow+" higher priority ad is "+stringLoaded);
+        return stringLoaded;
     }
 
 }
