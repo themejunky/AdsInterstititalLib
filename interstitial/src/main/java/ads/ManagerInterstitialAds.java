@@ -1,5 +1,7 @@
 package ads;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -8,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.github.ybq.android.spinkit.style.ThreeBounce;
@@ -15,7 +18,11 @@ import com.github.ybq.android.spinkit.style.ThreeBounce;
 import java.util.ArrayList;
 import java.util.List;
 
+import ads.interstitial.AdmobInterstitialAds;
+import ads.interstitial.AppnextAdsInterstitial;
+import ads.interstitial.FacebookInterstitialAds;
 import themejunky.com.interstitial.R;
+import utill.StartProgressBar;
 
 
 public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern {
@@ -54,21 +61,18 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
         this.action = action;
         this.flow = flow;
         Log.d(tagName,"showInterstitialLoading");
-        final android.app.AlertDialog.Builder alertDialog = new android.app.AlertDialog.Builder( context );
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context,android.R.style.Theme_Black_NoTitleBar_Fullscreen);
         LayoutInflater factory = LayoutInflater.from(context);
         View dialog = factory.inflate(R.layout.activity_loading_screen, null);
-        ImageView imageView = (ImageView) dialog.findViewById(R.id.imageTest);
+       // ImageView imageView = (ImageView) dialog.findViewById(R.id.imageTest);
         TextView textView =  dialog.findViewById(R.id.loadingText);
+         ProgressBar progressBar = dialog.findViewById(R.id.progressBar);
+         ImageView imageView = dialog.findViewById(R.id.imageView1);
         textView.setText(textLoading);
         alertDialog.setView(dialog);
         mDialog  = alertDialog.create();
-        mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        ThreeBounce threeBounce = new ThreeBounce();
-        threeBounce.setBounds(0, 0, 100, 100);
-        threeBounce.setColor(Color.CYAN);
-        imageView.setImageDrawable(threeBounce);
-        threeBounce.start();
         if(isShowLoading){
+            new StartProgressBar().startProgressBar(imageView,progressBar);
             mDialog.show();
         }
 
@@ -160,6 +164,7 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
                 if (admobInterstitialAds!=null && admobInterstitialAds.isLoadedAdmob()) {
                     Log.d(tagName, "Flow Interstitial: ---Admob 2 ---");
                     admobInterstitialAds.showInterstitialAdmob();
+                    delayCloseDialog(mDialog);
                     Log.d(tagName, "Flow Interstitial: ---Admob 3 ---");
                 } else {
                     Log.d(tagName, "Flow Interstitial: ---Admob 4 is null or not loaded");
@@ -169,6 +174,7 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
                 if (appnextInterstitialAds!=null &&appnextInterstitialAds.isLoadedAppNext()) {
                     Log.d(tagName, "Flow Interstitial: ---Appnext 2 ---");
                     appnextInterstitialAds.showAppNext();
+                    delayCloseDialog(mDialog);
                     Log.d(tagName, "Flow Interstitial: ---Appnext 3 ---");
                 } else {
                     Log.d(tagName, "Flow Interstitial: ---Appnext 4 is null or not loaded");
@@ -178,6 +184,7 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
                 if (facebookInterstitialAdsInterstitial!=null &&facebookInterstitialAdsInterstitial.isFacebookLoaded()) {
                     Log.d(tagName, "Flow Interstitial: ---Facebook 2 ---");
                     facebookInterstitialAdsInterstitial.showInterstitialFacebook();
+                    delayCloseDialog(mDialog);
                     Log.d(tagName, "Flow Interstitial: ---Facebook 3 ---");
                 } else {
                     Log.d(tagName, "Flow Interstitial: ---Facebook 4 is null or not loaded");
@@ -185,6 +192,14 @@ public class ManagerInterstitialAds  implements ListenerContract.ListenerIntern 
             }
         }
 
+    }
+    public void delayCloseDialog(final Dialog nDialog){
+        new android.os.Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                nDialog.dismiss();
+            }
+        },1000);
     }
 
     /*

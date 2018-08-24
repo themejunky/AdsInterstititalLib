@@ -14,6 +14,10 @@ public class ListenerContract {
         void afterInterstitialIsClosed(String action);
     }
 
+    public interface ListenerLogs{
+        void logs(String logs);
+    }
+
     public interface NoAdsLoaded{
         void noAdsLoaded(String action);
     }

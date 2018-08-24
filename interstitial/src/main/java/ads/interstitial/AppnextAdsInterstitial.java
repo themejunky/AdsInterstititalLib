@@ -1,4 +1,4 @@
-package ads;
+package ads.interstitial;
 
 
 import android.content.Context;
@@ -9,6 +9,8 @@ import com.appnext.base.Appnext;
 import com.appnext.core.callbacks.OnAdClosed;
 import com.appnext.core.callbacks.OnAdError;
 import com.appnext.core.callbacks.OnAdLoaded;
+
+import ads.ListenerContract;
 
 
 /**

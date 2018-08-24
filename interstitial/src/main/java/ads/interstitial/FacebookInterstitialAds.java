@@ -1,4 +1,4 @@
-package ads;
+package ads.interstitial;
 
 import android.content.Context;
 import android.util.Log;
@@ -7,6 +7,8 @@ import com.facebook.ads.Ad;
 import com.facebook.ads.AdError;
 import com.facebook.ads.InterstitialAd;
 import com.facebook.ads.InterstitialAdListener;
+
+import ads.ListenerContract;
 
 
 /**
