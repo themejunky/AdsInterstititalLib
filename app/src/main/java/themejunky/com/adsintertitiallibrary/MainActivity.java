@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
 
     public void onClick(View view) {
      //  managerInterstitialAds.requestNewInterstitial(this,flow,"intro");
-        managerInterstitialAds.showInterstitialLoading(this,true,5000,"intro","Loading Wallpaper...",flow);
+        managerInterstitialAds.showLoading(this,true,5000,"intro","Loading Wallpaper...",flow);
     }
 
 

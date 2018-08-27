@@ -64,7 +64,7 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
     }
 
 
-    public void showInterstitialLoading(Context context, boolean isShowLoading, int timeLoadinMillisec, final String action, String textLoading, List<String> flow) {
+    public void showLoading(Context context, boolean isShowLoading, int timeLoadinMillisec, final String action, String textLoading, List<String> flow) {
         this.action = action;
         this.flow = flow;
         Log.d(tagName, "showInterstitialLoading");
