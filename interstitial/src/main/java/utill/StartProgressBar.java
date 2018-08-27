@@ -43,6 +43,7 @@ public class StartProgressBar {
     };
     private ImageView img;
     private ProgressBar progressBar;
+    private boolean isStoped;
 
     private static void doTheUpAnimation(int fromLevel, int toLevel) {
         mLevel += LEVEL_DIFF;
@@ -73,19 +74,27 @@ public class StartProgressBar {
                             mImageDrawable.setLevel(progressStatus*100);
                             //   onClickOk(progressStatus);
                             if( progressBar.getProgress()==100){
-                                progressStatus=0;
-                                toLevel = 0;
                                 thread.interrupt();
                                 Log.d("adasdfasd", "setLevel"+(progressStatus*100));
+                                isStoped=true;
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        progressStatus=0;
+                                        toLevel = 0;
+                                    }
+                                },1000);
 
                             }
                         }
                     });
+                    if(!isStoped){
                     try {
                         // Sleep for 200 milliseconds.
-                        Thread.sleep(50);
+                        Thread.sleep(55);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                    }
                     }
                 }
             }
