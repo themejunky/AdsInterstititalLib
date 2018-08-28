@@ -71,7 +71,7 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
         Log.d(tagName, "showInterstitialLoading");
 
         LayoutInflater factory = LayoutInflater.from(context);
-        View customView  = factory.inflate(R.layout.activity_loading_screen, null);
+        View customView = factory.inflate(R.layout.activity_loading_screen, null);
         nDialog = new Dialog(context, R.style.full_screen_dialog);
         nDialog.setContentView(customView);
         nDialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
@@ -84,7 +84,7 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
         textView.setText(textLoading);
 
         if (isShowLoading) {
-            new StartProgressBar().startProgressBar(imageView, progressBar,view);
+            new StartProgressBar().startProgressBar(imageView, progressBar, view);
             nDialog.show();
         }
 
@@ -147,8 +147,8 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
     public void somethingReloaded(final String whatIsLoaded) {
         isSomeAdLoaded(whatIsLoaded);
         count++;
-        Log.d("isSomeAdLoaded", "count "+count);
-        if (count==1) {
+        Log.d("isSomeAdLoaded", "count " + count);
+        if (count == 1) {
             Log.d("isSomeAdLoaded", "wait 3 sec");
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -156,11 +156,11 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
                     Log.d(tagName, "showInterstitial " + isSomeAdLoaded(whatIsLoaded));
                     if (flow != null) {
                         if (flow.contains(isSomeAdLoaded(whatIsLoaded))) {
-                            showInterstitial(""+isSomeAdLoaded(whatIsLoaded));
+                            showInterstitial("" + isSomeAdLoaded(whatIsLoaded));
                             count = 0;
                         }
                     } else {
-                        Log.d(tagName,"Flow is NULL");
+                        Log.d(tagName, "Flow is NULL");
                     }
                 }
             }, 3000);
@@ -288,6 +288,7 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
 
 
     public String isSomeAdLoaded(String theAd) {
+        whatIsLoaded.clear();
         if (!whatIsLoaded.contains(theAd)) {
             whatIsLoaded.add(theAd);
         } else {
@@ -328,8 +329,6 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
         Log.d(tagName, "whatIsLoaded" + whatIsLoaded + " flow " + flow + " higher priority ad is " + stringLoaded);
         return stringLoaded;
     }
-
-
 
 
 }
