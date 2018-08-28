@@ -145,30 +145,23 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
     public void somethingReloaded(final String whatIsLoaded) {
         isSomeAdLoaded(whatIsLoaded);
         count++;
-        Log.d("isSomeAdLoaded", "count " + count);
-        if (count == 1) {
+        Log.d("isSomeAdLoaded", "count "+count);
+        if (count==1) {
             Log.d("isSomeAdLoaded", "wait 3 sec");
-            if (nrShow < 1) {
-                delaymillis = 1000;
-            } else {
-                delaymillis = 3000;
-            }
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     Log.d(tagName, "showInterstitial " + isSomeAdLoaded(whatIsLoaded));
                     if (flow != null) {
                         if (flow.contains(isSomeAdLoaded(whatIsLoaded))) {
-                            Log.d(tagName, "showInterstitial yeeeee");
-                            showInterstitial("" + isSomeAdLoaded(whatIsLoaded));
+                            showInterstitial(""+isSomeAdLoaded(whatIsLoaded));
                             count = 0;
                         }
                     } else {
-                        Log.d(tagName, "Flow is NULL");
+                        Log.d(tagName,"Flow is NULL");
                     }
                 }
-            }, delaymillis);
-
+            }, 3000);
         }
     }
 
@@ -333,5 +326,8 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
         Log.d(tagName, "whatIsLoaded" + whatIsLoaded + " flow " + flow + " higher priority ad is " + stringLoaded);
         return stringLoaded;
     }
+
+
+
 
 }
