@@ -15,6 +15,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.github.ybq.android.spinkit.style.ThreeBounce;
@@ -78,11 +79,12 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
         TextView textView = customView.findViewById(R.id.loadingText);
         ProgressBar progressBar = customView.findViewById(R.id.progressBar);
         ImageView imageView = customView.findViewById(R.id.imageView1);
+        RelativeLayout view = customView.findViewById(R.id.containerLoading);
 
         textView.setText(textLoading);
 
         if (isShowLoading) {
-            new StartProgressBar().startProgressBar(imageView, progressBar);
+            new StartProgressBar().startProgressBar(imageView, progressBar,view);
             nDialog.show();
         }
 

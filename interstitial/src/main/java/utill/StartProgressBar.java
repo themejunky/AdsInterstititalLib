@@ -3,11 +3,9 @@ package utill;
 import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import android.util.Log;
-import android.widget.EditText;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 /**
  * Created by Junky2 on 8/24/2018.
@@ -16,10 +14,8 @@ import android.widget.TextView;
 public class StartProgressBar {
 
     private static int progressStatus = 0;
-    private TextView textView;
     private static Handler handler = new Handler();
     static Drawable draw;
-    private EditText etPercent;
     private static ClipDrawable mImageDrawable;
 
     // a field in your class
@@ -27,7 +23,6 @@ public class StartProgressBar {
     private static int fromLevel = 0;
     private static int toLevel = 0;
 
-    public static final int MAX_LEVEL = 10000;
     public static final int LEVEL_DIFF = 100;
     public static final int DELAY = 30;
     Thread thread = new Thread();
@@ -42,7 +37,9 @@ public class StartProgressBar {
     };
     private ImageView img;
     private ProgressBar progressBar;
-    private boolean isStoped;
+    private View view;
+    private long sleepMillisec=50;
+    private boolean progressTrue=true;
 
     private static void doTheUpAnimation(int fromLevel, int toLevel) {
         mLevel += LEVEL_DIFF;
@@ -59,55 +56,51 @@ public class StartProgressBar {
     public void startThrad() {
         mImageDrawable = (ClipDrawable) img.getDrawable();
         thread = new Thread(runnable = new Runnable() {
+
             @Override
             public void run() {
-                Log.d("adasdfasd", String.valueOf("progressStatus: " + progressStatus));
-                while (progressStatus < 100) {
+                while (progressTrue) {
                     progressStatus += 1;
-                    Log.d("adasdfasd", String.valueOf("progressStatus: " + progressStatus));
                     handler.post(new Runnable() {
                         public void run() {
                             progressBar.setProgressDrawable(draw);
                             progressBar.setProgress(progressStatus);
-
                             mImageDrawable.setLevel(progressStatus * 100);
-                            //   onClickOk(progressStatus);
-                            if (progressBar.getProgress() == 100) {
-                                thread.interrupt();
-                                Log.d("adasdfasd", "setLevel" + (progressStatus * 100));
-                                isStoped = true;
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        progressStatus = 0;
-                                        toLevel = 0;
-                                    }
-                                }, 1000);
-
-                            }
+                            setTextLoading();
                         }
                     });
-                    if (!isStoped) {
-                        try {
-                            // Sleep for 200 milliseconds.
-                            Thread.sleep(55);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+
+                    try {
+                        Thread.sleep(sleepMillisec);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                 }
             }
         });
+
+        thread.interrupt();
     }
 
 
-    public void startProgressBar(ImageView img, final ProgressBar progressBar) {
+    public void startProgressBar(ImageView img, final ProgressBar progressBar,View view) {
         this.img = img;
+        this.view = view;
         this.progressBar = progressBar;
         startThrad();
         thread.start();
 
     }
 
+
+    public void setTextLoading() {
+
+        if (progressBar.getProgress() == 100) {
+            progressStatus = 0;
+            toLevel = 0;
+            view.setVisibility(View.GONE);
+            progressTrue = false;
+        }
+    }
 
 }
