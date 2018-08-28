@@ -150,6 +150,11 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
         Log.d("isSomeAdLoaded", "count " + count);
         if (count == 1) {
             Log.d("isSomeAdLoaded", "wait 3 sec");
+            if (nrShow < 1) {
+                delaymillis = 1000;
+            } else {
+                delaymillis = 3000;
+            }
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -163,7 +168,7 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
                         Log.d(tagName, "Flow is NULL");
                     }
                 }
-            }, 3000);
+            }, delaymillis);
         }
     }
 
@@ -232,6 +237,7 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
     }
 
     public void requestNewInterstitial() {
+        whatIsLoaded.clear();
         Log.d(tagName, "----requestNewInterstitial----");
         if (admobInterstitialAds != null) {
             admobInterstitialAds.requestNewInterstitialAdmob();
@@ -288,7 +294,6 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
 
 
     public String isSomeAdLoaded(String theAd) {
-        whatIsLoaded.clear();
         if (!whatIsLoaded.contains(theAd)) {
             whatIsLoaded.add(theAd);
         } else {
