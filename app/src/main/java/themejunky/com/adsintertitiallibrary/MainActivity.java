@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         managerInterstitialAds = ManagerInterstitialAds.getInstance(this,"aesfasdfasd");
-        managerInterstitialAds.initAdmob("ca-app-pub-5322508131338449/2877444211");
+        managerInterstitialAds.initAdmob("ca-app-pub-5322508131338449/2877444211",true);
       //  managerInterstitialAds.initAppnext("aacbb73a-09b8-455d-b9d8-1d246d5a2cb44");
         managerInterstitialAds.setInterstitialAdsListener(this);
         managerInterstitialAds.setNoAdsLoadedListener(this);
@@ -33,7 +33,13 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
 
     public void onClick(View view) {
      //  managerInterstitialAds.requestNewInterstitial(this,flow,"intro");
-        managerInterstitialAds.showInterstitialLoading(this,true,5000,"intro","Loading Wallpaper...",flow);
+      //  managerInterstitialAds.showInterstitialLoading(this,false,5000,"intro","Loading Wallpaper...",flow);
+        if(managerInterstitialAds.isSomethingLoad()){
+            managerInterstitialAds.showInterstitialWithoutLoading(flow,"intro");
+        }else {
+            startActivity(new Intent(this, Main2Activity.class));
+        }
+
     }
 
 

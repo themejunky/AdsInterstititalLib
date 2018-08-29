@@ -102,18 +102,18 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
         }, timeLoadinMillisec);
     }
 
-    public void initFacebook(String key) {
+    public void initFacebook(String key,Boolean reload) {
         if (key != null) {
             Log.d(tagName, "initFacebook");
-            facebookInterstitialAdsInterstitial = new FacebookInterstitialAds(context, tagName, key, this);
+            facebookInterstitialAdsInterstitial = new FacebookInterstitialAds(context, tagName, key, this,reload);
         }
 
     }
 
-    public void initAdmob(String key) {
+    public void initAdmob(String key,Boolean reload) {
         if (key != null) {
             Log.d(tagName, "initAdmob");
-            admobInterstitialAds = new AdmobInterstitialAds(context, tagName, key, this);
+            admobInterstitialAds = new AdmobInterstitialAds(context, tagName, key, this,reload);
         }
     }
 
@@ -221,14 +221,13 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
         }, 2000);
     }
 
-    /*
-    public void showInterstitial() {
-        mDialog.dismiss();
+    public void showInterstitialWithoutLoading(List<String>flow,String action) {
+        this.action = action;
+        this.flow = flow;
         if (flow != null && action != null) {
             part1Interstitial();
         }
     }
-    */
 
     private void part1Interstitial() {
         next = -1;
@@ -332,6 +331,14 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
 
         Log.d(tagName, "whatIsLoaded" + whatIsLoaded + " flow " + flow + " higher priority ad is " + stringLoaded);
         return stringLoaded;
+    }
+
+    public boolean isSomethingLoad(){
+        if(whatIsLoaded.size()>0){
+            return true;
+        }else {
+            return false;
+        }
     }
 
 

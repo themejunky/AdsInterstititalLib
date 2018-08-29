@@ -17,16 +17,18 @@ import ads.ListenerContract;
 
 public class FacebookInterstitialAds {
     private final Context activity;
+    private final Boolean isReloaded;
     public InterstitialAd interstitialAd;
     private String numeTag;
     private boolean isLoaded;
     private ListenerContract.ListenerIntern listener;
     private boolean noFacebookError=true;
 
-    public FacebookInterstitialAds(Context activity, String nameTag, String keyFacebook, ListenerContract.ListenerIntern listener){
+    public FacebookInterstitialAds(Context activity, String nameTag, String keyFacebook, ListenerContract.ListenerIntern listener,Boolean isReloaded){
         this.activity=activity;
         this.numeTag=nameTag;
         this.listener=listener;
+        this.isReloaded = isReloaded;
         initFacebookInterstitial(keyFacebook);
     }
 
@@ -45,6 +47,9 @@ public class FacebookInterstitialAds {
                 Log.d(numeTag,"Facebook Interstitial: dismissed!");
                 Log.d("dasdas","isInterstitialClosed");
                 listener.isInterstitialClosed();
+                if(isReloaded){
+                    interstitialAd.loadAd();
+                }
             }
 
             @Override
@@ -70,6 +75,9 @@ public class FacebookInterstitialAds {
 
             }
         });
+        if(isReloaded){
+            interstitialAd.loadAd();
+        }
         //interstitialAd.loadAd();
     }
 

@@ -17,6 +17,7 @@ import ads.ListenerContract;
 public class AdmobInterstitialAds  {
     private final Context context;
     private final String numeTag;
+    private final Boolean isReloaded;
     public InterstitialAd interstitialAdmob;
     private static AdmobInterstitialAds mInstance = null;
     private ListenerContract.ListenerIntern listener;
@@ -24,15 +25,17 @@ public class AdmobInterstitialAds  {
 
 
 
-    public AdmobInterstitialAds(Context context, String nameTag, String keyAdmob, ListenerContract.ListenerIntern listener){
+    public AdmobInterstitialAds(Context context, String nameTag, String keyAdmob, ListenerContract.ListenerIntern listener,Boolean isReloaded){
         this.context = context;
         this.numeTag=nameTag;
         this.listener = listener;
+        this.isReloaded = isReloaded;
         initAdmobInterstitial(keyAdmob);
     }
 
 
     public void initAdmobInterstitial(String adUnitId ) {
+
 
         interstitialAdmob = new com.google.android.gms.ads.InterstitialAd(context);
         if (adUnitId != null) {
@@ -43,6 +46,9 @@ public class AdmobInterstitialAds  {
                     super.onAdClosed();
                     Log.d(numeTag,"Admob Interstitial: Closed!");
                     listener.isInterstitialClosed();
+                    if(isReloaded){
+                        requestNewInterstitialAdmob();
+                    }
                 }
 
                 @Override
@@ -73,6 +79,9 @@ public class AdmobInterstitialAds  {
                 }
             };
             interstitialAdmob.setAdListener(adListener);
+            if(isReloaded){
+                requestNewInterstitialAdmob();
+            }
            // requestNewInterstitialAdmob();
         }
 
