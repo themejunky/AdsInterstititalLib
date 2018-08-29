@@ -1,5 +1,5 @@
 ﻿<resources>
-    <string name="advertisment_loading">Werbung wird geladen</string>
+    <string name="advertisement_loading">Werbung wird geladen</string>
         
     <string name="policy_text"> Damit Sie mehr personalisierten Content erhalten, kann diese App die Werbe-ID Ihres Geräts sammeln und speichern </string>
         

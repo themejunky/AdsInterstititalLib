@@ -1,6 +1,6 @@
 ﻿<resources>
 
-	<string name="advertisment_loading">Advertensie laai</string>
+	<string name="advertisement_loading">Advertensie laai</string>
     <string name="policy_title"> Privaatheidsbeleid </string>
         
     <string name="policy_text"> Om ons te help om meer gepersonaliseerde inhoud te bring, kan hierdie program dalk jou toestel se Advertensie ID versamel en stoor </string>

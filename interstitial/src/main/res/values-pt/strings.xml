@@ -1,5 +1,5 @@
 <resources>
-	<string name="advertisment_loading">Anúncio carregando</string>
+	<string name="advertisement_loading">Carregamento de publicidade</string>
     <string name="policy_title"> Política de Privacidade </string>
         
     <string name="policy_text"> Para nos ajudar a trazer um conteúdo mais personalizado, este aplicativo pode coletar e armazenar o código de publicidade do seu dispositivo </string>

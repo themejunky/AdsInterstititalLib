@@ -1,5 +1,5 @@
 <resources>
-	<string name="advertisment_loading">Carga de anuncio</string>
+	<string name="advertisement_loading">Carga de publicidad</string>
     <string name = "notification_title"> ¡Califica Icon Pack! </string>
     <string name = "notification_subtitle"> Valoramos sus comentarios, háganos saber qué piensa sobre Icon Pack </string>
 

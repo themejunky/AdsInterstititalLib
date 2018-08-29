@@ -1,5 +1,5 @@
 <resources>
-	<string name="advertisment_loading">Chargement de la publicité</string>
+	<string name="advertisement_loading">Chargement de la publicité</string>
     <string name="policy_title"> Règles de confidentialité </string>
     
 	<string name="policy_text"> Pour nous aider à vous offrir un contenu plus personnalisé, cette application peut collecter et stocker l\'identifiant publicitaire de votre appareil </string>.
