@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ads.interstitial.AdmobInterstitialAds;
-import ads.interstitial.AppnextAdsInterstitial;
 import ads.interstitial.FacebookInterstitialAds;
 import themejunky.com.interstitial.R;
 import utill.StartProgressBar;
@@ -39,7 +38,7 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
     private ListenerContract.AdsInterstitialListener listener;
     private int next;
     private String action = "testAction";
-    private AppnextAdsInterstitial appnextInterstitialAds;
+ //   private AppnextAdsInterstitial appnextInterstitialAds;
     private List<String> whatIsLoaded = new ArrayList<>();
     private ListenerContract.NoAdsLoaded noAdsLoadedListener;
     private List<String> flow = new ArrayList<>();
@@ -118,12 +117,12 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
         }
     }
 
-    public void initAppnext(String key) {
+   /* public void initAppnext(String key) {
         if (key != null) {
             Log.d(tagName, "initAppnext");
             appnextInterstitialAds = new AppnextAdsInterstitial(context, tagName, key, this);
         }
-    }
+    }*/
 
 
     public void setInterstitialAdsListener(ListenerContract.AdsInterstitialListener adsListener) {
@@ -188,7 +187,7 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
                 } else {
                     Log.d(tagName, "Flow Interstitial: ---Admob 4 is null or not loaded");
                 }
-            } else if (theAd.equals("appnext")) {
+            } /*else if (theAd.equals("appnext")) {
                 Log.d(tagName, "Flow Interstitial: ---Appnext 1 ---");
                 if (appnextInterstitialAds != null && appnextInterstitialAds.isLoadedAppNext()) {
                     Log.d(tagName, "Flow Interstitial: ---Appnext 2 ---");
@@ -198,7 +197,7 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
                 } else {
                     Log.d(tagName, "Flow Interstitial: ---Appnext 4 is null or not loaded");
                 }
-            } else if (theAd.equals("facebook")) {
+            } */else if (theAd.equals("facebook")) {
                 Log.d(tagName, "Flow Interstitial: ---Facebook 1 ---");
                 if (facebookInterstitialAdsInterstitial != null && facebookInterstitialAdsInterstitial.isFacebookLoaded()) {
                     Log.d(tagName, "Flow Interstitial: ---Facebook 2 ---");
@@ -245,9 +244,9 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
         if (facebookInterstitialAdsInterstitial != null) {
             facebookInterstitialAdsInterstitial.requestNewInterstitialFacebook();
         }
-        if (appnextInterstitialAds != null) {
+        /*if (appnextInterstitialAds != null) {
             appnextInterstitialAds.requestNewInterstitialAppnext();
-        }
+        }*/
 
     }
 
@@ -275,7 +274,7 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
                         runAdds_Part2Interstitial();
                     }
                     break;
-                case "appnext":
+                /*case "appnext":
                     Log.d(tagName, "Flow Interstitial: ---Appnext 1 ---");
                     if (appnextInterstitialAds != null && appnextInterstitialAds.isLoadedAppNext()) {
                         Log.d(tagName, "Flow Interstitial: ---Appnext 2 ---");
@@ -284,7 +283,7 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
                     } else {
                         runAdds_Part2Interstitial();
                     }
-                    break;
+                    break;*/
                 default:
                     Log.d(tagName, "Flow Interstitial: ---Default---");
                     break;
