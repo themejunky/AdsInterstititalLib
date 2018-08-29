@@ -1,0 +1,213 @@
+<resources>
+	<string name="advertisment_loading">Загрузка рекламы</string>
+
+    <string name="policy_title"> Политика конфиденциальности </string>
+        
+    <string name="policy_text"> Чтобы помочь нам принести вам более персонализированный контент, это приложение может собирать и сохранять рекламный идентификатор вашего устройства </string>
+        
+    <string name="ourbest"> Самое лучшее приложение </string>
+        
+    <string name="share"> Поделиться </string>
+        
+    <string name="rate"> Rate </string>
+        
+    <string name="share_text"> Проверьте эту удивительную тему sms, которую я нашел </string>
+        
+    <string name="loading"> Подготовка вашей темы ... </string>
+        
+    <string name="text_more_themes"> Другие темы </string>
+        
+    <string name="theme_loaded"> Тема загружена </string>
+        
+    <string name="text_top1"> Живые обои! </string>
+        
+    <string name="text_bottom1"> Попробуйте эти удивительные живые обои! </string>
+        
+    <string name="text_top2"> Дополнительные бесплатные темы </string>
+        
+    <string name="text_bottom2"> Посмотрите, какой вам нравится ^ _ ^ </string>
+
+        <!-- Strings Loading -->
+        
+    <string name="ad_will_load"> Объявление загрузит </string>
+        
+    <string name="applying_theme"> Применение вашей темы ... </string>
+    <string name="loading_wallpaper">Загрузка обоев ...</string>
+        
+    <string name="loading_live_wallpaper"> Загрузка живых обоев ... </string>
+
+    <string name="notification_title"> Пожалуйста, оцените Icon Pack! </string>
+        
+    <string name="notification_subtitle"> Мы ценим ваши отзывы, поэтому дайте нам знать, что вы думаете об Icon Pack </string>
+
+    <string name = "cancel"> Отменить </string>
+         <string name = "activate"> Активировать </string>
+         <string name = "скачать"> Загрузить </string>
+         <string name = "activate_app_keyboard_description"> Пожалуйста, активируйте Keyboard Plus, чтобы использовать эту тему </string>
+         <string name = "tv_load_themes"> Загрузка вашей темы! </string>
+         <string name = "tv_wait"> Подождите ... </string>
+         <string name = "tv_app_name"> Клавиатура Plus </string>
+         <string name = "dontleave"> Не уходи! </string>
+         <string name = "dontleave_desc"> Ваша тема не активирована, и вы не получите: </string>
+        
+    <string name="noInternetToast"> Нет Интернета </string>
+        
+    <string name="noInternetTitle"> Ooops! </string>
+        
+    <string name="noIntenertMessage"> Нет подключения к Интернету! </string>
+        
+    <string name="noInternetReload"> Обновить </string>
+
+        
+    <string name="apply_theme"> Применить тему </string>
+        
+    <string name="best_theme"> Наше лучшее приложение </string>
+        
+    <string name="rate_app"> Оценить приложение </string>
+        
+    <string name="get_more"> Получить дополнительные темы </string>
+        
+    <string name="wallpapers"> Обои </string>
+
+        
+    <string name="wait"> Icon Pack Plus </string>
+        
+    <string name="wait2"> Загрузка темы youre </string>
+
+        
+    <string name="wallpaper_question"> Вы уверены, что хотите установить эти обои? </string>
+        
+    <string name="wallpaper_no"> no </string>
+        
+    <string name="wallpaper_yes"> ДА </string>
+        
+    <string name="wallpaper_set"> Обои установлены </string>
+
+        
+    <string name="download_it_from_google_play"> Эта тема требует установки вышеуказанной клавиатуры. Загрузите его из Google Play Store. </string>
+        
+    <string name="download_it_from_google_play_sms"> Эта тема требует установки SMS Plus для работы. Загрузите его из Google Play. </string>
+
+        
+    <string name="download_cancel"> <u> Нет, спасибо! </u> </string>
+        
+    <string name="download_download"> Скачать значок Pack Plus </string>
+        
+    <string name="download_title"> Еще один шаг ... </string>
+        
+    <string name="download_text"> Чтобы использовать этот значок и обои, установите Icon Pack Plus </string>
+
+        
+    <string name="natificationRateTitle"> Пожалуйста, оцените меня! </string>
+        
+    <string name="natificationRateMessage"> Я был бы очень признателен, если вы потратите немного времени, чтобы оценить меня </string>
+
+        
+    <string name="something_wrong"> Что-то пошло не так, попробуйте еще раз (Код:% 1 $ s) </string>
+
+        
+    <string name="rate_title"> Ваше мнение имеет значение для нас! </string>
+        
+    <string name="rate_button"> Оцените нас </string>
+
+        
+    <string name="theme_id"> Test1 </string>
+        
+    <string name="keyboard_theme_name"> Test2 </string>
+
+
+        
+    <string name="dont_title"> Не уходи! </string>
+        
+    <string name="dont_text"> Вы не сможете использовать этот значок и обои! </string>
+        
+    <string name="dont_1"> Красивые обои <b> </b> </string>
+        
+    <string name="dont_2"> Великолепные значки <b> </b> </string>
+        
+    <string name="dont_3"> Обновление до <b> VIP </b> </string>
+        
+    <string name="dont_4"> Запросить новые значки <b> </b> </string>
+        
+    <string name="dont_5"> Новые <b> темы </b> каждый день </string>
+        
+    <string name="dont_6"> <b> 40 + </b> пользовательские значки </string>
+        
+    <string name="dont_download"> Загрузить значок Pack Plus </string>
+
+    <!-- Strings Sms Plus -->
+        
+    <string name="awesome_themes"> Awesome <b> темы </b> </string>
+        
+    <string name="animated_emoji_packs"> Анимированные <b> emoji </b> пакеты </string>
+        
+    <string name="beautiful_stickers"> Красивые наклейки <b> </b> </string>
+        
+    <string name="private_box"> <b> Закрытое </b> поле </string>
+        
+    <string name="sms_blocker_blacklisting"> Sms <b> blocker </b> / черный список </string>
+        
+    <string name="gif_integration"> <b> Интеграция GIF </b> </string>
+        
+    <string name="download_sms_plus"> Загрузить SMS Plus </string>
+        
+    <string name="tv_app_name_sms"> SMS Plus </string>
+        
+    <string name="tv_app_name_paris"> Paris SMS </string>
+        
+    <string name="tv_app_description"> Красивые сообщения </string>
+        
+    <string name="theme_name"> </string>
+
+    <!-- LWP -->
+        
+    <string name="object_category"> Параметры объекта </string>
+        
+    <string name="background_change_shake"> Акселерометр </string>
+        
+    <string name="object_desc"> Выбрать объект для размещения </string>
+        
+    <string name="object_selection_category"> Выбор объекта </string>
+        
+    <string name="object_selection_type"> Объекты </string>
+        
+    <string name="rotation_direction_desc"> Выберите Background </string>
+        
+    <string name="set_direction"> Установить падающее направление </string>
+        
+    <string name="settings"> Изменить настройки </string>
+
+    <!-- Строки Lwp -->
+        
+    <string name="fall_items"> Падающие элементы </string>
+        
+    <string name="select_item_type"> Выберите тип элемента </string>
+        
+    <string name="fall_one_object"> Один объект </string>
+        
+    <string name="fall_two_objects"> Два объекта </string>
+        
+    <string name="direction"> Direction </string>
+        
+    <string name="direction_description"> Установить направление падения для вас </string>
+        
+    <string name="top_to_buttom"> Вершина к Buttom </string>
+        
+    <string name="buttom_to_top"> Buttom to Top </string>
+        
+    <string name="object_size"> Размер объекта </string>
+        
+    <string name="medium"> Medium </string>
+        
+    <string name="small"> Маленький </string>
+        
+    <string name="large"> Large </string>
+        
+    <string name="speed"> Скорость </string>
+        
+    <string name="speed_desctiption"> Выберите, как быстро вы хотите перемещать элементы </string>
+        
+    <string name="on"> Вкл </string>
+        
+    <string name="off"> Выкл. </string>
+</resources>
