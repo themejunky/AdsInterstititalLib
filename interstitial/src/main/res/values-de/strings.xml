@@ -39,8 +39,8 @@
         <string name="notification_subtitle"> Wir schätzen Ihr Feedback. Lassen Sie uns wissen, was Sie über Icon Pack </string> denken
 
 
-    <string name = "Abbrechen"> Abbrechen </string>
-         <string name = "aktivieren"> Aktivieren </string>
+    <string name = "cancel"> Abbrechen </string>
+         <string name = "activate"> Aktivieren </string>
          <string name = "download"> Herunterladen </string>
          <string name = "activate_app_keyboard_description"> Aktivieren Sie Keyboard Plus, um dieses Thema zu verwenden </string>
          <string name = "tv_load_themes"> Laden Sie Ihr Thema! </string>
@@ -126,7 +126,7 @@
     <string name="dont_3"> Aktualisieren Sie auf <b> VIP </b> </string>
         
     <string name="dont_4"> Fordern Sie neue <b> Symbole </b> </string>
-    an
+   
         
     <string name="dont_5"> Neue <b> Themen </b> jeden Tag </string>
         
@@ -158,20 +158,20 @@
 
     <!-- lwp -->
         
-    <string name="Objektkategorie"> Objekteinstellungen </string>
+    <string name="object_category"> Objekteinstellungen </string>
         
     <string name="background_change_shake"> Beschleunigungssensor </string>
         <string name="object_desc"> Wählen Sie das zu platzierende Objekt </string> aus
         
     <string name="object_selection_category"> Objektauswahl </string>
         
-    <string name="Objektauswahltyp"> Objekte </string>
+    <string name="object_selection_type"> Objekte </string>
         
     <string name="rotation_direction_desc"> Wählen Sie Hintergrund </string>
         
     <string name="set_direction"> Fallrichtung festlegen </string>
         
-    <string name="einstellungen"> Einstellungen ändern </string>
+    <string name="settings"> Einstellungen ändern </string>
 
     <!-- Lwp Strings -->
         
@@ -190,19 +190,19 @@
         
     <string name="buttom_to_top"> Buttom nach oben </string>
         
-    <string name="Objektgröße"> Objektgröße </string>
+    <string name="object_size"> Objektgröße </string>
         
     <string name="Medium"> Mittel </string>
         
-    <string name="klein"> Klein </string>
+    <string name="small"> Klein </string>
         
-    <string name="groß"> Groß </string>
+    <string name="large"> Groß </string>
         
-    <string name="Geschwindigkeit"> Geschwindigkeit </string>
+    <string name="speed"> Geschwindigkeit </string>
         
     <string name="speed_description"> Wählen Sie aus, wie schnell die Elemente verschoben werden sollen </string>
         
-    <string name="Ein"> Ein </string>
+    <string name="on"> Ein </string>
         
-    <string name="Aus"> Aus </string>
+    <string name="off"> Aus </string>
 </resources>

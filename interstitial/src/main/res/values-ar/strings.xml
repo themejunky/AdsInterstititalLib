@@ -1,5 +1,5 @@
 <resources>
-<string name="advertisment_loading"> تحميل الإعلان </string>
+    <string name="advertisment_loading"> تحميل الإعلان </string>
     <string name="policy_title"> سياسة الخصوصية </string>
         
     <string name="policy_text"> لمساعدتنا على توفير المزيد من المحتوى المخصص لك ، قد يجمع هذا التطبيق ويخزن معرّف إعلانات جهازك </string>

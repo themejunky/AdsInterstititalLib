@@ -127,8 +127,8 @@
     <string name="dont_download"> Icon Pack Plus\'ı indir </string>
 
     <string name = "cancel"> İptal et </string>
-         <string name = "etkinleştir"> Etkinleştir </string>
-         <string name = "indir"> İndir </string>
+         <string name = "activate"> Etkinleştir </string>
+         <string name = "download"> İndir </string>
          <string name = "activate_app_keyboard_description"> Bu temayı kullanmak için lütfen Keyboard Plus\'ı etkinleştirin </string>
          <string name = "tv_load_themes"> Temanızı yükleniyor! </string>
          <string name = "tv_wait"> Lütfen bekleyin ... </string>
