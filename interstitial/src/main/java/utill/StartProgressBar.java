@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import ads.ListenerContract;
+
 /**
  * Created by Junky2 on 8/24/2018.
  */
@@ -17,6 +19,7 @@ public class StartProgressBar {
     private static Handler handler = new Handler();
     static Drawable draw;
     private static ClipDrawable mImageDrawable;
+    private ListenerContract.ListenerIntern listenerIntern;
 
     // a field in your class
     private static int mLevel = 0;
@@ -83,9 +86,10 @@ public class StartProgressBar {
     }
 
 
-    public void startProgressBar(ImageView img, final ProgressBar progressBar,View view) {
+    public void startProgressBar(ImageView img, final ProgressBar progressBar, View view, ListenerContract.ListenerIntern listenerIntern) {
         this.img = img;
         this.view = view;
+        this.listenerIntern = listenerIntern;
         this.progressBar = progressBar;
         startThrad();
         thread.start();

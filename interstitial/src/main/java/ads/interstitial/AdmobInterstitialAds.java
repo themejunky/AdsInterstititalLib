@@ -88,6 +88,7 @@ public class AdmobInterstitialAds  {
     }
 
     public boolean isLoadedAdmob() {
+        Log.d(numeTag,"isLoadedAdmob : " +interstitialAdmob.isLoaded());
         if (interstitialAdmob!=null && interstitialAdmob.isLoaded()) {
             return true;
         } else {

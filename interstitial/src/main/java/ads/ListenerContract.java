@@ -9,6 +9,7 @@ public class ListenerContract {
         void isInterstitialClosed();
         void somethingReloaded(String whatIsLoaded);
 
+
     }
     public interface AdsInterstitialListener{
         void afterInterstitialIsClosed(String action);
@@ -21,5 +22,6 @@ public class ListenerContract {
     public interface NoAdsLoaded{
         void noAdsLoaded(String action);
     }
+
 
 }
