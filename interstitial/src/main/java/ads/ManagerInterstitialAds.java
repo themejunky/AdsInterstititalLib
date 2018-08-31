@@ -16,7 +16,7 @@ import utill.LoadingProgressBarActivity;
 
 public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
     private static ManagerInterstitialAds instance;
-    private static FacebookInterstitialAds facebookInterstitialAdsInterstitial;
+    public  FacebookInterstitialAds facebookInterstitialAdsInterstitial;
     private static AdmobInterstitialAds admobInterstitialAds;
     private String tagName = "infoTagName";
     private final Context context;

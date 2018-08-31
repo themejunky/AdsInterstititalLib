@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
         managerInterstitialAds.setInterstitialAdsListener(this);
         managerInterstitialAds.setNoAdsLoadedListener(this);
 
+
     }
 
     public void onClick(View view) {
