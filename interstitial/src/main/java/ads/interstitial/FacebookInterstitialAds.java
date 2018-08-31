@@ -49,9 +49,9 @@ public class FacebookInterstitialAds {
                 Log.d(numeTag,"Facebook Interstitial: dismissed!");
                 Log.d("dasdas","isInterstitialClosed");
                 listener.isInterstitialClosed(""+interstitialAd);
-                /*if(isReloaded){
+                if(isReloaded){
                     interstitialAd.loadAd();
-                }*/
+                }
             }
 
             @Override
@@ -67,7 +67,7 @@ public class FacebookInterstitialAds {
                 isLoaded =true;
                 Log.d(numeTag,"Facebook Interstitial: is Loaded  " + numeTag + " " + interstitialAd);
                 listener.somethingReloaded("facebook");
-                interstitialAd.show();
+                //interstitialAd.show();
             }
 
             @Override
