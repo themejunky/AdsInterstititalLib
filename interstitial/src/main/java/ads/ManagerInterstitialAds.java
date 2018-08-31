@@ -103,8 +103,9 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
 
     @Override
     public void isInterstitialClosed(String name) {
-        Log.d(tagName, "isInterstitialClosed: " + name);
+        Log.d(tagName, "isInterstitialClosed 1: " + name);
         if (listener != null) {
+            Log.d(tagName, "isInterstitialClosed 2: " + " " + listener + " " + name);
             listener.afterInterstitialIsClosed(action);
         } else {
             Log.d(tagName, "listener null");
