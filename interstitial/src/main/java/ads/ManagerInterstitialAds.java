@@ -34,13 +34,11 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("wawww","onCreate 1");
 
            if(getIntent().getBooleanExtra("fromLoading",false)){
-               Log.d("wawww","onCreate 3");
+               Log.d(tagName,"onCreate 1");
                part1Interstitial();
-           }else {
-               Log.d("wawww","onCreate 2.2");
+               Log.d(tagName,"onCreate 1.1");
            }
 
     }
