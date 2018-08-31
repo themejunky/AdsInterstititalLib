@@ -34,12 +34,13 @@ public class FacebookInterstitialAds {
 
 
     public void initFacebookInterstitial(String keyFacebook) {
+        Log.d(numeTag,"Facebook init " + numeTag + " " + interstitialAd);
         interstitialAd = new InterstitialAd(activity, keyFacebook);
         interstitialAd.setAdListener(new InterstitialAdListener() {
 
             @Override
             public void onInterstitialDisplayed(Ad ad) {
-                Log.d(numeTag,"Facebook Interstitial: displayed! " + numeTag);
+                Log.d(numeTag,"Facebook Interstitial: displayed! " + numeTag + " " + interstitialAd);
             }
 
             @Override
@@ -62,7 +63,7 @@ public class FacebookInterstitialAds {
             @Override
             public void onAdLoaded(Ad ad) {
                 isLoaded =true;
-                Log.d(numeTag,"Facebook Interstitial: is Loaded  " + numeTag );
+                Log.d(numeTag,"Facebook Interstitial: is Loaded  " + numeTag + " " + interstitialAd);
                 listener.somethingReloaded("facebook");
             }
 
@@ -78,7 +79,7 @@ public class FacebookInterstitialAds {
         });
         if(isReloaded){
             interstitialAd.loadAd();
-            Log.d(numeTag,"Facebook Interstitial: isReloaded: " +interstitialAd);
+            Log.d(numeTag,"Facebook Interstitial: isReloaded: " +interstitialAd + " " + interstitialAd);
         }
         //interstitialAd.loadAd();
     }
