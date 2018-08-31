@@ -123,8 +123,10 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
 
     public void part1Interstitial() {
         next = -1;
+        Log.d(tagName,"part1Interstitial 1");
         runAdds_Part2Interstitial();
-        Log.d(tagName,"part1Interstitial");
+        Log.d(tagName,"part1Interstitial 2 ");
+
     }
 
     public void requestNewInterstitial() {
