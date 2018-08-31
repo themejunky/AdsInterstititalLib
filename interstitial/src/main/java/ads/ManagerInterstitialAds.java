@@ -30,14 +30,14 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
 
     private boolean reloadAd;
 
-    public static synchronized ManagerInterstitialAds getInstance(Context context) {
+  /*  public static synchronized ManagerInterstitialAds getInstance(Context context) {
         if (instance == null) {
             return new ManagerInterstitialAds(context);
         } else {
             return instance;
         }
     }
-
+*/
     public ManagerInterstitialAds(Context context) {
         this.context = context;
 
@@ -51,7 +51,6 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
     public void showInterstitial (Activity activity, boolean isShowLoading, final String action, String textLoading, List<String> flow){
         this.action = action;
         this.flow = flow;
-        this.reloadAd=reloadAd;
 
         if (isShowLoading) {
             Intent intent  = new Intent(activity, LoadingProgressBarActivity.class);
@@ -68,9 +67,8 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
 
         }
 
-
-
     }
+
 
     public void initFacebook(String key,boolean reloadAd) {
         if (key != null) {
@@ -134,8 +132,8 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
         /*if (appnextInterstitialAds != null) {
             appnextInterstitialAds.requestNewInterstitialAppnext();
         }*/
-
     }
+
 
     public void runAdds_Part2Interstitial() {
         Log.d(tagName,"runAdds_Part2Interstitial:" + flow.size());
