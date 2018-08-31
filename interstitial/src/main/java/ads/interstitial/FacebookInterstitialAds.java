@@ -41,13 +41,14 @@ public class FacebookInterstitialAds {
             @Override
             public void onInterstitialDisplayed(Ad ad) {
                 Log.d(numeTag,"Facebook Interstitial: displayed! " + numeTag + " " + interstitialAd);
+
             }
 
             @Override
             public void onInterstitialDismissed(Ad ad) {
                 Log.d(numeTag,"Facebook Interstitial: dismissed!");
                 Log.d("dasdas","isInterstitialClosed");
-                listener.isInterstitialClosed();
+                listener.isInterstitialClosed(""+interstitialAd);
                 /*if(isReloaded){
                     interstitialAd.loadAd();
                 }*/
