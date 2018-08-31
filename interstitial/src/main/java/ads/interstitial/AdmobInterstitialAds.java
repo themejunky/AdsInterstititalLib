@@ -45,7 +45,7 @@ public class AdmobInterstitialAds  {
                 public void onAdClosed() {
                     super.onAdClosed();
                     Log.d(numeTag,"Admob Interstitial: Closed!");
-                    listener.isInterstitialClosed();
+                    listener.isInterstitialClosed(" " + interstitialAdmob);
                     if(isReloaded){
                         requestNewInterstitialAdmob();
                     }
