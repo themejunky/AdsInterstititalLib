@@ -48,7 +48,6 @@ public class FacebookInterstitialAds {
                 Log.d(numeTag,"Facebook Interstitial: dismissed!");
                 Log.d("dasdas","isInterstitialClosed");
                 listener.isInterstitialClosed();
-                interstitialAd.destroy();
                 if(isReloaded){
                     interstitialAd.loadAd();
                 }
@@ -58,6 +57,8 @@ public class FacebookInterstitialAds {
             public void onError(Ad ad, AdError adError) {
                 Log.d(numeTag,"Facebook Interstitial: error: "+ adError.getErrorMessage());
                 noFacebookError = false;
+
+
             }
 
             @Override
@@ -65,6 +66,7 @@ public class FacebookInterstitialAds {
                 isLoaded =true;
                 Log.d(numeTag,"Facebook Interstitial: is Loaded  " + numeTag + " " + interstitialAd);
                 listener.somethingReloaded("facebook");
+                interstitialAd.show();
             }
 
             @Override
