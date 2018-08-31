@@ -1,4 +1,3 @@
-/*
 package ads.interstitial;
 
 
@@ -12,13 +11,6 @@ import com.appnext.core.callbacks.OnAdError;
 import com.appnext.core.callbacks.OnAdLoaded;
 
 import ads.ListenerContract;
-
-
-*/
-/**
- * Created by Alin on 5/21/2017.
- *//*
-
 
 public class AppnextAdsInterstitial {
     public static AppnextAdsInterstitial instance = null;
@@ -91,4 +83,3 @@ public class AppnextAdsInterstitial {
         interstitialAppnext.loadAd();
     }
 }
-*/

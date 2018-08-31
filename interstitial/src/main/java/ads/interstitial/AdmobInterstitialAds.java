@@ -22,8 +22,7 @@ public class AdmobInterstitialAds  {
     private static AdmobInterstitialAds mInstance = null;
     private ListenerContract.ListenerIntern listener;
     private boolean isAdmobLoaded;
-
-
+    private AdRequest adRequest;
 
     public AdmobInterstitialAds(Context context, String nameTag, String keyAdmob, ListenerContract.ListenerIntern listener,Boolean isReloaded){
         this.context = context;
@@ -35,8 +34,7 @@ public class AdmobInterstitialAds  {
 
 
     public void initAdmobInterstitial(String adUnitId ) {
-
-
+        adRequest = new AdRequest.Builder().build();
         interstitialAdmob = new com.google.android.gms.ads.InterstitialAd(context);
         if (adUnitId != null) {
             interstitialAdmob.setAdUnitId(adUnitId);
@@ -45,7 +43,7 @@ public class AdmobInterstitialAds  {
                 public void onAdClosed() {
                     super.onAdClosed();
                     Log.d(numeTag,"Admob Interstitial: Closed!");
-                    listener.isInterstitialClosed(" " + interstitialAdmob);
+                    listener.isInterstitialClosed();
                     if(isReloaded){
                         requestNewInterstitialAdmob();
                     }
@@ -105,10 +103,9 @@ public class AdmobInterstitialAds  {
     }
 
     public void requestNewInterstitialAdmob() {
-        Log.d(numeTag,"Admob Interstitial: requestNewInterstitialAdmob");
-        AdRequest adRequest;
-        adRequest = new AdRequest.Builder().build();
+        Log.d(numeTag,"Admob Interstitial: requestNewInterstitialAdmob 1: "+interstitialAdmob);
         interstitialAdmob.loadAd(adRequest);
+        Log.d(numeTag,"Admob Interstitial: requestNewInterstitialAdmob 2: "+adRequest);
 
 
     }

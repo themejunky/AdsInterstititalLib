@@ -37,8 +37,8 @@ android {
     productFlavors {
         bkt_big_keyboardplus {
             applicationId "com.keyboard.plus.theme.big"
-            versionCode  1
-            versionName  '1.0.0'
+            versionCode 1
+            versionName '1.0.0'
             signingConfig signingConfigs.bkt
             flavorDimensions "default"
         }
@@ -49,4 +49,5 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation project(':interstitial')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 }

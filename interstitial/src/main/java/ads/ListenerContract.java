@@ -6,7 +6,7 @@ package ads;
 
 public class ListenerContract {
     public interface ListenerIntern {
-        void isInterstitialClosed(String name);
+        void isInterstitialClosed();
         void somethingReloaded(String whatIsLoaded);
 
 
