@@ -32,7 +32,7 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
 
     public static synchronized ManagerInterstitialAds getInstance(Context context) {
         if (instance == null) {
-            return new ManagerInterstitialAds(context);
+            return instance = new ManagerInterstitialAds(context);
         } else {
             return instance;
         }

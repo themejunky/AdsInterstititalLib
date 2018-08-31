@@ -94,6 +94,7 @@ public class LoadingProgressBarActivity extends AppCompatActivity {
                                 } else {
                                     Log.d("qwqwq", "2");
                                     managerInterstitialAds.part1Interstitial();
+                                    Log.d("qwqwq", "2.1");
                                 }
                                 toLevel = 0;
                                 finish();
