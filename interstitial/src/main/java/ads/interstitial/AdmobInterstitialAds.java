@@ -21,7 +21,7 @@ public class AdmobInterstitialAds  {
     public InterstitialAd interstitialAdmob;
     private static AdmobInterstitialAds mInstance = null;
     private ListenerContract.ListenerIntern listener;
-    private boolean isAdmobLoaded;
+    public boolean isAdmobLoaded;
     private AdRequest adRequest;
 
     public AdmobInterstitialAds(Context context, String nameTag, String keyAdmob, ListenerContract.ListenerIntern listener,Boolean isReloaded){
