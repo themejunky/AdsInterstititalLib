@@ -35,13 +35,18 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
            if(getIntent().getBooleanExtra("fromLoading",false)){
-               Log.d(tagName,"onCreate 1");
+               Log.d("wawww","onCreate 1");
                part1Interstitial();
-               Log.d(tagName,"onCreate 1.1");
+               Log.d("wawww","onCreate 1.1");
+           }else {
+               Log.d("wawww","onCreate 2");
            }
 
     }
+
+
 
 
 
@@ -121,9 +126,9 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
 
     public void part1Interstitial() {
         next = -1;
-        Log.d(tagName,"part1Interstitial 1");
+        Log.d("wawww","part1Interstitial 1");
         runAdds_Part2Interstitial();
-        Log.d(tagName,"part1Interstitial 2 ");
+        Log.d("wawww","part1Interstitial 2 ");
 
     }
 
@@ -142,7 +147,10 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
 
 
     public void runAdds_Part2Interstitial() {
-        Log.d(tagName,"runAdds_Part2Interstitial:" + flow.size());
+        if(tagName==null){
+            Log.d("wawww","null tagname");
+        }
+        Log.d("wawww","runAdds_Part2Interstitial:" + flow.size());
         next++;
         if (next < flow.size()) {
             switch (flow.get(next)) {
