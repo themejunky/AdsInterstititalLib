@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
         managerInterstitialAds =new ManagerInterstitialAds();
         managerInterstitialAds.setTagName("infoTagName");
         managerInterstitialAds.initAdmob("ca-app-pub-5322508131338449/2877444211",false,this);
-        managerInterstitialAds.initFacebook("151778225425502_281530955783561",false,this);
+        managerInterstitialAds.initFacebook("223324501480181_478380622641233",false,this);
       //  managerInterstitialAds.initAppnext("aacbb73a-09b8-455d-b9d8-1d246d5a2cb44");
         managerInterstitialAds.setInterstitialAdsListener(this);
         managerInterstitialAds.setNoAdsLoadedListener(this);

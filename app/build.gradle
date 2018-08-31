@@ -24,6 +24,25 @@ android {
     task wrapper(type: Wrapper) {
         gradleVersion = '2.0'
     }
+    signingConfigs {
+        bkt {
+            Properties props = new Properties()
+            props.load(new FileInputStream(file("../keystore/kplus4.properties")))
+            storeFile file(props['key.store'])
+            storePassword props['key.store.password']
+            keyAlias props['key.alias']
+            keyPassword props['key.alias.password']
+        }
+    }
+    productFlavors {
+        bkt_big_keyboardplus {
+            applicationId "com.keyboard.plus.theme.big"
+            versionCode  1
+            versionName  '1.0.0'
+            signingConfig signingConfigs.bkt
+            flavorDimensions "default"
+        }
+    }
 }
 
 dependencies {
