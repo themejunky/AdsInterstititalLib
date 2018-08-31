@@ -39,6 +39,7 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
     }
     public ManagerInterstitialAds(Context context) {
         this.context = context;
+        instance = this;
 
     }
 
