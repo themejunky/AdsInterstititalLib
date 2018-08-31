@@ -41,7 +41,8 @@ public class LoadingProgressBarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_loading_progress_bar);
         stringLoading = getIntent().getStringExtra("textLoading");
         stringAction = getIntent().getStringExtra("textAction");
-        managerInterstitialAds = new  ManagerInterstitialAds(this);
+        managerInterstitialAds = ManagerInterstitialAds.getInstance(this);
+        Log.d("wawww","managerInterstitialAds: " + managerInterstitialAds);
         init();
         ruunable();
         startThrad();

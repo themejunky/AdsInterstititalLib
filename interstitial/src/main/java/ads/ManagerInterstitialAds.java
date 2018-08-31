@@ -30,14 +30,13 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
 
     private boolean reloadAd;
 
-  /*  public static synchronized ManagerInterstitialAds getInstance(Context context) {
+    public static synchronized ManagerInterstitialAds getInstance(Context context) {
         if (instance == null) {
             return new ManagerInterstitialAds(context);
         } else {
             return instance;
         }
     }
-*/
     public ManagerInterstitialAds(Context context) {
         this.context = context;
 
