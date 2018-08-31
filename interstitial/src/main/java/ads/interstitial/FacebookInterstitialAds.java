@@ -39,7 +39,7 @@ public class FacebookInterstitialAds {
 
             @Override
             public void onInterstitialDisplayed(Ad ad) {
-                Log.d(numeTag,"Facebook Interstitial: displayed!");
+                Log.d(numeTag,"Facebook Interstitial: displayed! " + numeTag);
             }
 
             @Override
@@ -47,6 +47,7 @@ public class FacebookInterstitialAds {
                 Log.d(numeTag,"Facebook Interstitial: dismissed!");
                 Log.d("dasdas","isInterstitialClosed");
                 listener.isInterstitialClosed();
+                interstitialAd.destroy();
                 if(isReloaded){
                     interstitialAd.loadAd();
                 }
@@ -61,7 +62,7 @@ public class FacebookInterstitialAds {
             @Override
             public void onAdLoaded(Ad ad) {
                 isLoaded =true;
-                Log.d(numeTag,"Facebook Interstitial: is Loaded");
+                Log.d(numeTag,"Facebook Interstitial: is Loaded  " + numeTag );
                 listener.somethingReloaded("facebook");
             }
 
@@ -77,6 +78,7 @@ public class FacebookInterstitialAds {
         });
         if(isReloaded){
             interstitialAd.loadAd();
+            Log.d(numeTag,"Facebook Interstitial: isReloaded: " +interstitialAd);
         }
         //interstitialAd.loadAd();
     }
