@@ -1,5 +1,6 @@
 package utill;
 
+import android.content.Intent;
 import android.graphics.drawable.ClipDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -41,8 +42,6 @@ public class LoadingProgressBarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_loading_progress_bar);
         stringLoading = getIntent().getStringExtra("textLoading");
         stringAction = getIntent().getStringExtra("textAction");
-        managerInterstitialAds = ManagerInterstitialAds.instance;
-        Log.d("wawww","managerInterstitialAds: " + managerInterstitialAds);
         init();
         ruunable();
         startThrad();
@@ -93,8 +92,11 @@ public class LoadingProgressBarActivity extends AppCompatActivity {
                                     ManagerInterstitialAds.noAdsLoadedListener.noAdsLoaded(stringAction);
                                 } else {
                                     Log.d("qwqwq", "2");
-                                    managerInterstitialAds.part1Interstitial();
-                                    Log.d("qwqwq", "2.1");
+                                    Intent intent = new Intent(LoadingProgressBarActivity.this,ManagerInterstitialAds.class);
+                                    intent.putExtra("fromLoading",true);
+                                    startActivity(intent);
+                                    Log.d("qwqwq", "2");
+                                    finish();
                                 }
                                 toLevel = 0;
                                 finish();

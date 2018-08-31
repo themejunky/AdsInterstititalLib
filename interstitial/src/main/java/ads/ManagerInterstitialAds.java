@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -14,12 +16,11 @@ import ads.interstitial.FacebookInterstitialAds;
 import utill.LoadingProgressBarActivity;
 
 
-public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
+public class ManagerInterstitialAds extends AppCompatActivity implements ListenerContract.ListenerIntern {
     public static ManagerInterstitialAds instance;
     public  FacebookInterstitialAds facebookInterstitialAdsInterstitial;
     private static AdmobInterstitialAds admobInterstitialAds;
     private String tagName = "infoTagName";
-    private final Context context;
     private ListenerContract.AdsInterstitialListener listener;
     private int next;
     private String action = "testAction";
@@ -27,21 +28,24 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
     public static ListenerContract.NoAdsLoaded noAdsLoadedListener;
     private static List<String> flow = new ArrayList<>();
 
-
     private boolean reloadAd;
 
-    public static synchronized ManagerInterstitialAds getInstance(Context context) {
-        if (instance == null) {
-            return instance = new ManagerInterstitialAds(context);
-        } else {
-            return instance;
-        }
-    }
-    public ManagerInterstitialAds(Context context) {
-        this.context = context;
-        instance = this;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.d("wawww","onCreate 1");
+
+           if(getIntent().getBooleanExtra("fromLoading",false)){
+               Log.d("wawww","onCreate 3");
+               part1Interstitial();
+           }else {
+               Log.d("wawww","onCreate 2.2");
+           }
 
     }
+
+
 
     public void setTagName(String tagName){
         this.tagName = tagName;
@@ -70,7 +74,7 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
     }
 
 
-    public void initFacebook(String key,boolean reloadAd) {
+    public void initFacebook(String key,boolean reloadAd,Context context) {
         if (key != null) {
             Log.d(tagName, "initFacebook");
             facebookInterstitialAdsInterstitial = new FacebookInterstitialAds(context, tagName, key, this,reloadAd);
@@ -78,7 +82,7 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
 
     }
 
-    public void initAdmob(String key,boolean reloadAd) {
+    public void initAdmob(String key,boolean reloadAd,Context context) {
         if (key != null) {
             Log.d(tagName, "initAdmob");
             admobInterstitialAds = new AdmobInterstitialAds(context, tagName, key, this,reloadAd);
@@ -147,6 +151,7 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
                     if (admobInterstitialAds != null && admobInterstitialAds.isLoadedAdmob()) {
                         Log.d(tagName, "Flow Interstitial: ---Admob 2 ---");
                         admobInterstitialAds.showInterstitialAdmob();
+                        finish();
                         Log.d(tagName, "Flow Interstitial: ---Admob 3 ---");
                     } else {
                         runAdds_Part2Interstitial();
@@ -157,6 +162,7 @@ public class ManagerInterstitialAds implements ListenerContract.ListenerIntern {
                     if (facebookInterstitialAdsInterstitial != null && facebookInterstitialAdsInterstitial.isFacebookLoaded()) {
                         Log.d(tagName, "Flow Interstitial: ---Facebook 2 ---");
                         facebookInterstitialAdsInterstitial.showInterstitialFacebook();
+                        finish();
                         Log.d(tagName, "Flow Interstitial: ---Facebook 3 ---");
                     } else {
                         runAdds_Part2Interstitial();
