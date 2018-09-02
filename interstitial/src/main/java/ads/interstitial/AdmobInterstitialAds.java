@@ -104,7 +104,7 @@ public class AdmobInterstitialAds  {
 
     public void requestNewInterstitialAdmob() {
         Log.d(numeTag,"Admob Interstitial: requestNewInterstitialAdmob 1: "+interstitialAdmob);
-        interstitialAdmob.loadAd(adRequest);
+        interstitialAdmob.loadAd(new AdRequest.Builder().build());
         Log.d(numeTag,"Admob Interstitial: requestNewInterstitialAdmob 2: "+adRequest);
 
 

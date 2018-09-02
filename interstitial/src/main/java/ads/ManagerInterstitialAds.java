@@ -29,6 +29,8 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
     public static ListenerContract.NoAdsLoaded noAdsLoadedListener;
     private static List<String> flow = new ArrayList<>();
     private static FacebookInterstitialAds facebookInterstitialAds;
+    private String textLoading;
+    private Activity activity;
 
 
     @Override
@@ -57,8 +59,10 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
 
     public void showInterstitial (Activity activity,FacebookInterstitialAds facebookInterstitialAds, boolean isShowLoading, final String action, String textLoading, List<String> flow){
         this.action = action;
+        this.activity = activity;
         this.flow = flow;
         this.facebookInterstitialAds = facebookInterstitialAds;
+        this.textLoading = textLoading;
         Log.d(tagName, "showInterstitial " + facebookInterstitialAds);
         if (isShowLoading) {
             Intent intent  = new Intent(activity, LoadingProgressBarActivity.class);
@@ -158,6 +162,7 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
                         admobInterstitialAds.showInterstitialAdmob();
                         finish();
                         Log.d(tagName, "Flow Interstitial: ---Admob 3 ---");
+                        finish();
                         if(whatIsLoadedList.contains("admob")){
                             whatIsLoadedList.remove("admob");
                         }
@@ -175,8 +180,7 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
                         facebookInterstitialAds.showInterstitialFacebook();
                         if(facebookInterstitialAds.isFaceookError()){
                             Log.d(tagName, "Flow Interstitial: ---Facebook 2.1- facebook erorrs ---");
-                            noAdsLoadedListener.noAdsLoaded(action);
-                            finish();
+                            runAdds_Part2Interstitial();
                         }
                         finish();
                         if(whatIsLoadedList.contains("facebook")){

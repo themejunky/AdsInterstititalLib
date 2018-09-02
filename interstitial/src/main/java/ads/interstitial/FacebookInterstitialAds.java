@@ -101,7 +101,7 @@ public class FacebookInterstitialAds {
     }
     public boolean isFacebookLoaded(){
         Log.d(numeTag,"Facebook Interstitial: isFacebookLoaded :interstitialAd " + interstitialAd +" noFacebookError " +noFacebookError + " isAdLoaded " + interstitialAd.isAdLoaded() + " isLoaded " + isLoaded );
-        if(interstitialAd!=null && noFacebookError && (interstitialAd.isAdLoaded()||isLoaded) ){
+        if(interstitialAd!=null  && (interstitialAd.isAdLoaded()||isLoaded) ){
             Log.d(numeTag,"Facebook Interstitial: isFacebookLoaded true");
             return true;
         }else {
