@@ -94,10 +94,10 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
         }
     }
 
-    public void initAppnext(String key,Context context) {
+    public void initAppnext(String key,boolean reloadAd,Context context) {
         if (key != null) {
             Log.d(tagName, "initAppnext");
-            appnextAdsInterstitial = new AppnextAdsInterstitial(context, tagName, key, this);
+            appnextAdsInterstitial = new AppnextAdsInterstitial(context, tagName, key, this,reloadAd);
         }
     }
 
