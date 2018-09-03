@@ -38,26 +38,23 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
         super.onCreate(savedInstanceState);
 
 
-           if(getIntent().getBooleanExtra("fromLoading",false)){
-               Log.d(tagName,"onCreate 1");
-               part1Interstitial();
-               Log.d(tagName,"onCreate 1.1");
-           }else {
-               Log.d(tagName,"onCreate 2");
-           }
+        if (getIntent().getBooleanExtra("fromLoading", false)) {
+            Log.d(tagName, "onCreate 1");
+            part1Interstitial();
+            Log.d(tagName, "onCreate 1.1");
+        } else {
+            Log.d(tagName, "onCreate 2");
+        }
 
     }
 
 
-
-
-
-    public void setTagName(String tagName){
+    public void setTagName(String tagName) {
         this.tagName = tagName;
     }
 
 
-    public void showInterstitial (Activity activity,FacebookInterstitialAds facebookInterstitialAds, boolean isShowLoading, final String action, String textLoading, List<String> flow){
+    public void showInterstitial(Activity activity, FacebookInterstitialAds facebookInterstitialAds, boolean isShowLoading, final String action, String textLoading, List<String> flow) {
         this.action = action;
         this.activity = activity;
         this.flow = flow;
@@ -65,39 +62,37 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
         this.textLoading = textLoading;
         Log.d(tagName, "showInterstitial " + facebookInterstitialAds);
         if (isShowLoading) {
-            Intent intent  = new Intent(activity, LoadingProgressBarActivity.class);
-            intent.putExtra("textLoading",textLoading);
-            intent.putExtra("textAction",action);
+            Intent intent = new Intent(activity, LoadingProgressBarActivity.class);
+            intent.putExtra("textLoading", textLoading);
+            intent.putExtra("textAction", action);
             activity.startActivity(intent);
             requestNewInterstitial(facebookInterstitialAds);
-        }else {
-            if(whatIsLoadedList.size()>0){
+        } else {
+            if (whatIsLoadedList.size() > 0) {
                 part1Interstitial();
-            }else {
+            } else {
                 noAdsLoadedListener.noAdsLoaded(action);
             }
 
         }
+    }
 
+    public FacebookInterstitialAds initFacebook(String key, boolean reloadAd, Context context) {
+        return new FacebookInterstitialAds(context, tagName, key, this, reloadAd);
     }
 
 
-    public FacebookInterstitialAds initFacebook(String key,boolean reloadAd,Context context) {
-         return new FacebookInterstitialAds(context, tagName, key, this,reloadAd);
-    }
-
-
-    public void initAdmob(String key,boolean reloadAd,Context context) {
+    public void initAdmob(String key, boolean reloadAd, Context context) {
         if (key != null) {
             Log.d(tagName, "initAdmob");
-            admobInterstitialAds = new AdmobInterstitialAds(context, tagName, key, this,reloadAd);
+            admobInterstitialAds = new AdmobInterstitialAds(context, tagName, key, this, reloadAd);
         }
     }
 
-    public void initAppnext(String key,boolean reloadAd,Context context) {
+    public void initAppnext(String key, boolean reloadAd, Context context) {
         if (key != null) {
             Log.d(tagName, "initAppnext");
-            appnextAdsInterstitial = new AppnextAdsInterstitial(context, tagName, key, this,reloadAd);
+            appnextAdsInterstitial = new AppnextAdsInterstitial(context, tagName, key, this, reloadAd);
         }
     }
 
@@ -122,26 +117,26 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
 
     @Override
     public void somethingReloaded(final String whatIsLoaded) {
-        Log.d(tagName, "somethingReloaded  "+whatIsLoaded );
+        Log.d(tagName, "somethingReloaded  " + whatIsLoaded);
         whatIsLoadedList.add(whatIsLoaded);
     }
 
     public void part1Interstitial() {
         next = -1;
-        Log.d(tagName,"part1Interstitial 1");
+        Log.d(tagName, "part1Interstitial 1");
         runAdds_Part2Interstitial();
-        Log.d(tagName,"part1Interstitial 2 ");
+        Log.d(tagName, "part1Interstitial 2 ");
 
     }
 
 
     public void requestNewInterstitial(FacebookInterstitialAds facebookInterstitialAds) {
-        Log.d(tagName, "whatIsLoadedList.size(): " +whatIsLoadedList.size());
+        Log.d(tagName, "whatIsLoadedList.size(): " + whatIsLoadedList.size());
         if (admobInterstitialAds != null) {
             admobInterstitialAds.requestNewInterstitialAdmob();
         }
         if (facebookInterstitialAds != null) {
-            Log.d(tagName,"requestNewInterstitial:" + facebookInterstitialAds);
+            Log.d(tagName, "requestNewInterstitial:" + facebookInterstitialAds);
             facebookInterstitialAds.requestNewInterstitialFacebook();
         }
         if (appnextAdsInterstitial != null) {
@@ -151,19 +146,19 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
 
 
     public void runAdds_Part2Interstitial() {
-        Log.d(tagName,"runAdds_Part2Interstitial:" + flow.size());
+        Log.d(tagName, "runAdds_Part2Interstitial:" + flow.size());
         next++;
         if (next < flow.size()) {
             switch (flow.get(next)) {
                 case "admob":
-                    Log.d(tagName, "Flow Interstitial: ---Admob 1 --- " + admobInterstitialAds );
+                    Log.d(tagName, "Flow Interstitial: ---Admob 1 --- " + admobInterstitialAds);
                     if (admobInterstitialAds != null && admobInterstitialAds.isLoadedAdmob()) {
                         Log.d(tagName, "Flow Interstitial: ---Admob 2 ---");
                         admobInterstitialAds.showInterstitialAdmob();
                         finish();
                         Log.d(tagName, "Flow Interstitial: ---Admob 3 ---");
                         finish();
-                        if(whatIsLoadedList.contains("admob")){
+                        if (whatIsLoadedList.contains("admob")) {
                             whatIsLoadedList.remove("admob");
                         }
                     } else {
@@ -178,12 +173,12 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
                     if (facebookInterstitialAds != null && facebookInterstitialAds.isFacebookLoaded()) {
                         Log.d(tagName, "Flow Interstitial: ---Facebook 2 ---");
                         facebookInterstitialAds.showInterstitialFacebook();
-                        if(facebookInterstitialAds.isFaceookError()){
+                        if (facebookInterstitialAds.isFaceookError()) {
                             Log.d(tagName, "Flow Interstitial: ---Facebook 2.1- facebook erorrs ---");
                             runAdds_Part2Interstitial();
                         }
                         finish();
-                        if(whatIsLoadedList.contains("facebook")){
+                        if (whatIsLoadedList.contains("facebook")) {
                             whatIsLoadedList.remove("facebook");
                         }
                         Log.d(tagName, "Flow Interstitial: ---Facebook 3 ---");
@@ -197,7 +192,7 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
                     if (appnextAdsInterstitial != null && appnextAdsInterstitial.isLoadedAppNext()) {
                         Log.d(tagName, "Flow Interstitial: ---Appnext 2 ---");
                         appnextAdsInterstitial.showAppNext();
-                        if(whatIsLoadedList.contains("appnext")){
+                        if (whatIsLoadedList.contains("appnext")) {
                             whatIsLoadedList.remove("appnext");
                         }
                         Log.d(tagName, "Flow Interstitial: ---Appnext 3 ---");
@@ -212,7 +207,7 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
                     Log.d(tagName, "Flow Interstitial: ---Default---" + action);
                     break;
             }
-        }else {
+        } else {
             Log.d(tagName, "Flow Interstitial: ---Default--Else-" + action);
             noAdsLoadedListener.noAdsLoaded(action);
             finish();
