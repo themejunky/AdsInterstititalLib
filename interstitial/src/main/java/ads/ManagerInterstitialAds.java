@@ -18,7 +18,6 @@ import utill.LoadingProgressBarActivity;
 
 
 public class ManagerInterstitialAds extends AppCompatActivity implements ListenerContract.ListenerIntern {
-
     public static AdmobInterstitialAds admobInterstitialAds;
     public static AppnextAdsInterstitial appnextAdsInterstitial;
     private String tagName = "infoTagName";
@@ -167,9 +166,6 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
                     }
                     break;
                 case "facebook":
-                    Log.d(tagName, "Flow Interstitial: ---Facebook 1 ---facebookInterstitialAdsInterstitial--- " + facebookInterstitialAds);
-                    Log.d(tagName, "Flow Interstitial: ---Facebook 1 ---isLoaded-- " + facebookInterstitialAds.isFacebookLoaded());
-                    Log.d(tagName, "Flow Interstitial: ---Facebook 1 ---interstitialAd-- " + facebookInterstitialAds.interstitialAd);
                     if (facebookInterstitialAds != null && facebookInterstitialAds.isFacebookLoaded()) {
                         Log.d(tagName, "Flow Interstitial: ---Facebook 2 ---");
                         facebookInterstitialAds.showInterstitialFacebook();
