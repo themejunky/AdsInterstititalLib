@@ -1,4 +1,151 @@
 <resources>
     <string name="app_name">Interstitial</string>
+
+    <string name="notification_title">Please rate it!</string>
+    <string name="notification_subtitle">We value your feedback so let us know what you think about it</string>
+
+    <string name="noInternetToast">No Internet</string>
+    <string name="noInternetTitle">Ooops!</string>
+    <string name="noIntenertMessage">No Internet connection found!</string>
+    <string name="noInternetReload">Reload</string>
+
+    <string name="apply_theme">Apply Theme</string>
+    <string name="best_theme"> Our Best App</string>
+    <string name="rate_app">Rate App</string>
+    <string name="get_more"> Get More Themes</string>
+    <string name="wallpapers">Wallpapers</string>
+
+    <string name="wait">Icon Pack Plus</string>
+    <string name="wait2">Loading youre theme</string>
+
+    <string name="wallpaper_question">Are you sure you want to set this wallpaper?</string>
+    <string name="wallpaper_no">no</string>
+    <string name="wallpaper_yes">YES</string>
+    <string name="wallpaper_set">Wallpaper is set</string>
+
+    <string name="download_it_from_google_play">This theme requires the above keyboard to be installed. Please download it from Google Play Store.</string>
+    <string name="download_it_from_google_play_sms">This theme requires SMS Plus to be installed in order to work. Please download it from Google Play.</string>
+
+    <string name="download_cancel"><u>No thanks!</u></string>
+    <string name="download_download">Download Icon Pack Plus</string>
+    <string name="download_title">One more step...</string>
+    <string name="download_text">To use this Icon pack and wallpaper, please install Icon Pack Plus</string>
+
+    <string name="natificationRateTitle">Please rate me!</string>
+    <string name="natificationRateMessage">I would appreciate a lot if you spend a little time to rate me</string>
+
+    <string name="something_wrong">Something went wrong please try again ( Code : %1$s )</string>
+
+    <string name="rate_title">Your opinion matters to us!</string>
+    <string name="rate_button">Rate us</string>
+
+    <string name="theme_id">Test1</string>
+    <string name="keyboard_theme_name">Test2</string>
+
+
+
+    <string name="dont_title">Don\'t leave!</string>
+    <string name="dont_text">You won\'t be able to use this icon pack and wallpaper! </string>
+    <string name="dont_1">Beautiful <b>wallpapers</b></string>
+    <string name="dont_2">Gorgeous <b>icons</b></string>
+    <string name="dont_3">Upgrade to <b>VIP</b></string>
+    <string name="dont_4">Request new <b>icons</b></string>
+    <string name="dont_5">New <b>themes</b> every day</string>
+    <string name="dont_6"><b>40+</b> custom icons</string>
+    <string name="dont_download">Download Icon Pack Plus</string>
+
+
+    <string name="mother_activity" translatable="false">com.themejunky.iconmanager.screens.activity.MainActivity</string>
+
+    <string name="push_notification_0" translatable="false">level_0</string>
+    <string name="push_notification_flag" translatable="false">pusNotificationFlag</string>
+    <string name="push_notification_key" translatable="false">pushNotification</string>
+
+    <string name="analytics_screens" translatable="false">Release : Screens</string>
+    <string name="analytics_mother_downloads" translatable="false">Release : Mother Downloads</string>
+    <string name="analytics_clicks" translatable="false">Release : Clicks</string>
+    <string name="analytics_apply" translatable="false">Release : Apply Theme</string>
+    <string name="analytics_carousel" translatable="false">Release : Carousel</string>
+    <string name="analytics_lib" translatable="false">Release : Library</string>
+    <string name="analytics_lib_crash" translatable="false">Release : Library Crash</string>
+    <string name="analytics_thread_pool" translatable="false">Release : Thread Pool</string>
+    <string name="analytics_infos" translatable="false">Release : Information</string>
+    <string name="analytics_component" translatable="false">Release : ComponentInfo</string>
+
+
+    <string name="analytics_event" translatable="false">ThemesApp</string>
+
+
+    <!-- Strings KeyboardPLus-->
+
+    <string name="cancel">Cancel</string>
+    <string name="activate">Activate</string>
+    <string name="download">Download</string>
+    <string name="activate_app_keyboard_description">Please activate Keyboard Plus to use this theme</string>
+    <string name="tv_load_themes">Loading your theme!</string>
+    <string name="tv_wait">Please wait...</string>
+    <string name="tv_app_name">Keyboard Plus</string>
+
+
+    <string name="dontleave">Don\'t leave!</string>
+    <string name="dontleave_desc">Your theme is not activated and you won\'t get:</string>
+    <string name="reason7">Awesome <b>themes</b></string>
+    <string name="reason1">Access to hundreds of <b>FREE</b> themes</string>
+    <string name="reason2"><b>Animated</b> Themes</string>
+    <string name="reason3">Cute <b>Stickers</b> and <b>Emojis</b></string>
+    <string name="reason4">Unique, <b>custom</b> made <b>themes</b></string>
+    <string name="reason5">Ad free, <b>VIP</b> content</string>
+    <string name="reason6"><b>Matching</b> SMS <b>themes</b></string>
+
+    <string name="download_kplus">Download Keyboard Plus</string>
+
+
+    <!-- Strings Electric Color-->
+
+
+    <string name="activate_app_keyboard_description_electric">Please activate Electric Color Keyboard to use this theme</string>
+    <string name="electric_app_name">Electric Color Keyboard</string>
+    <string name="download_electric">Download Electric Color Keyboard</string>
+
+    <!-- Strings Fast Keyboard-->
+    <string name="fast_app_name">Fast Keyboard</string>
+    <string name="activate_app_keyboard_description_fast">Please activate Fast Keyboard to use this theme</string>
+    <string name="download_fast">Download Fast Keyboard</string>
+
+    <!-- Strings Sms Plus-->
+    <string name="awesome_themes">Awesome <b>themes</b></string>
+    <string name="animated_emoji_packs">Animated <b>emoji</b> packs</string>
+    <string name="beautiful_stickers">Beautiful <b>stickers</b></string>
+    <string name="private_box"><b>Private</b> box</string>
+    <string name="sms_blocker_blacklisting">Sms <b>blocker</b>/blacklisting</string>
+    <string name="gif_integration"><b>GIF</b> integration</string>
+    <string name="download_sms_plus">Download\nSMS Plus</string>
+    <string name="tv_app_name_sms">SMS Plus</string>
+    <string name="tv_app_name_paris">Paris SMS</string>
+    <string name="tv_app_description">Beautiful messaging</string>
+    <string name="theme_name"></string>
+
+    <string name="mother_packagename">com.smsplus.app</string>
+    <string name="analytics_traker_id">UA-100139395-1</string>
+
+    <!-- Strings Layout 1234 -->
     <string name="advertisement_loading">Advertisement Loading</string>
+    <string name="policy_title">Privacy Policy</string>
+    <string name="policy_text">To help us bring you more personalized content this app may collect and store your device\'s Advertising ID</string>
+    <string name="policy_description">By clicking this button you agree to this app\'s Privacy Policy</string>
+    <string name="ourbest">Our best app</string>
+    <string name="share_text">Check out this amazing sms theme I found </string>
+    <string name="loading">Getting your theme ready...</string>
+    <string name="text_more_themes">More Themes</string>
+    <string name="theme_loaded">Theme is loaded</string>
+    <string name="text_top1">Set Live Wallpaper!</string>
+    <string name="next_step">Next Step</string>
+    <string name="text_bottom1">Try this amazing live wallpaper!</string>
+    <string name="text_top2">More free themes</string>
+    <string name="text_bottom2">See which one you like ^_^</string>
+
+    <!-- Strings Loading -->
+    <string name="ad_will_load">An ad will load</string>
+    <string name="applying_theme">Applying your theme...</string>
+    <string name="loading_live_wallpaper">Loading live wallpaper...</string>
 </resources>

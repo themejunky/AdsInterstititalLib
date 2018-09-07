@@ -89,7 +89,6 @@ public class FacebookInterstitialAds {
     }
 
     public  void showInterstitialFacebook() {
-
         if (interstitialAd !=null && isLoaded) {
             Log.d(numeTag,"Facebook Interstitial: is shown: " +interstitialAd);
             interstitialAd.show();
@@ -97,7 +96,6 @@ public class FacebookInterstitialAds {
         } else {
             Log.d(numeTag,"Facebook Interstitial: show failed: " + interstitialAd);
         }
-
     }
     public boolean isFacebookLoaded(){
         Log.d(numeTag,"Facebook Interstitial: isFacebookLoaded :interstitialAd " + interstitialAd +" noFacebookError " +noFacebookError + " isAdLoaded " + interstitialAd.isAdLoaded() + " isLoaded " + isLoaded );
