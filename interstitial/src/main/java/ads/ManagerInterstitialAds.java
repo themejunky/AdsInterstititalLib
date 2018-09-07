@@ -166,6 +166,7 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
                     }
                     break;
                 case "facebook":
+                    Log.d(tagName, "Flow Interstitial: ---Facebook 1 ---");
                     if (facebookInterstitialAds != null && facebookInterstitialAds.isFacebookLoaded()) {
                         Log.d(tagName, "Flow Interstitial: ---Facebook 2 ---");
                         facebookInterstitialAds.showInterstitialFacebook();
