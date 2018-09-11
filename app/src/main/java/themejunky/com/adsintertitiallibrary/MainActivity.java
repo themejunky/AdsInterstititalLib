@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
     private FacebookInterstitialAds facebookInterstitialAds1;
     private FacebookInterstitialAds facebookInterstitialAds2;
 
-    private List<String> flow = Arrays.asList("facebook","admob","appnext");
+    private List<String> flow = Arrays.asList("admob","appnext");
     private boolean somethingIsLoaded;
     private boolean isReloaded;
     private int nrAdsManagers=0;
@@ -28,13 +28,20 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        managerInterstitialAds =new ManagerInterstitialAds();
+
+        managerInterstitialAds = new ManagerInterstitialAds();
         managerInterstitialAds.setTagName("infoTagName");
+
         //managerInterstitialAds.initAdmob("ca-app-pub-5322508131338449/2877444211",false,this);
-        managerInterstitialAds.initAdmob("ca-app-pub-3940256099942544/8691691433",false,this);
-        facebookInterstitialAds1 = managerInterstitialAds.initFacebook("223324501480181_4783806226412333",false,this);
-        facebookInterstitialAds2 = managerInterstitialAds.initFacebook("223324501480181_478379819307980",false,this);
-      //  managerInterstitialAds.initAppnext("aacbb73a-09b8-455d-b9d8-1d246d5a2cb44");
+        //managerInterstitialAds.initAdmob("ca-app-pub-3940256099942544/8691691433",false,this);
+
+        //facebookInterstitialAds1 = managerInterstitialAds.initFacebook("223324501480181_4783806226412333",false,this);
+        //facebookInterstitialAds2 = managerInterstitialAds.initFacebook("223324501480181_478379819307980",false,this);
+
+        //managerInterstitialAds.initAppnext("aacbb73a-09b8-455d-b9d8-1d246d5a2cb4", false, this);
+        //managerInterstitialAds.initAppnext("729ceb30-a78a-492f-950b-deec4d2fca0f", false, this);
+        managerInterstitialAds.initAppnext("8ce1a263-7a74-42b1-b209-80276c0fe971", false, this);
+
        // facebookInterstitialAds1.requestNewInterstitialFacebook();
        // facebookInterstitialAds2.requestNewInterstitialFacebook();
         managerInterstitialAds.setInterstitialAdsListener(this);

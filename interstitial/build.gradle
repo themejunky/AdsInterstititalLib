@@ -36,5 +36,4 @@ dependencies {
      //Appnext
     implementation "com.appnext.sdk:ads:2.4.2.471.2"
 
-
 }

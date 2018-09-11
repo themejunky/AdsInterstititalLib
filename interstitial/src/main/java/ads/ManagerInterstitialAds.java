@@ -39,6 +39,7 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
 
         if (getIntent().getBooleanExtra("fromLoading", false)) {
             Log.d(tagName, "onCreate 1");
+            finish();
             part1Interstitial();
             Log.d(tagName, "onCreate 1.1");
         } else {

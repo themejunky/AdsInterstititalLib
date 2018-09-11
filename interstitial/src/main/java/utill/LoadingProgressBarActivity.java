@@ -47,7 +47,6 @@ public class LoadingProgressBarActivity extends AppCompatActivity {
         startThrad();
         thread.start();
 
-
     }
 
     private static void doTheUpAnimation(int toLevel) {
@@ -57,7 +56,6 @@ public class LoadingProgressBarActivity extends AppCompatActivity {
             mUpHandler.postDelayed(animateUpImage, DELAY);
         } else {
             mUpHandler.removeCallbacks(animateUpImage);
-
         }
 
     }
@@ -95,7 +93,7 @@ public class LoadingProgressBarActivity extends AppCompatActivity {
                                     Intent intent = new Intent(LoadingProgressBarActivity.this,ManagerInterstitialAds.class);
                                     intent.putExtra("fromLoading",true);
                                     startActivity(intent);
-                                    Log.d("qwqwq", "2");
+                                    Log.d("qwqwq", "2.1");
                                     finish();
                                 }
                                 toLevel = 0;
