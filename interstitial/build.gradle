@@ -31,9 +31,11 @@ dependencies {
     implementation 'com.facebook.android:audience-network-sdk:4.99.1'
     //Admob
     implementation "com.google.android.gms:play-services-ads:15.0.1"
+    implementation 'com.google.android.gms:play-services-analytics:15.0.0'
     //Progress Library
     //implementation 'com.github.ybq:Android-SpinKit:1.1.0'
      //Appnext
     implementation "com.appnext.sdk:ads:2.4.2.471.2"
+    implementation project(':TJ_Gae-release')
 
 }

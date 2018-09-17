@@ -5,10 +5,12 @@ import android.util.Log;
 
 import com.facebook.ads.Ad;
 import com.facebook.ads.AdError;
+import com.facebook.ads.AdSettings;
 import com.facebook.ads.InterstitialAd;
 import com.facebook.ads.InterstitialAdListener;
 
 import ads.ListenerContract;
+import module.themejunky.com.tj_gae.Module_GoogleAnalyticsEvents;
 
 
 /**
@@ -23,12 +25,14 @@ public class FacebookInterstitialAds {
     private static boolean isLoaded;
     private ListenerContract.ListenerIntern listener;
     private boolean noFacebookError=true;
+    private Module_GoogleAnalyticsEvents mGAE;
 
     public FacebookInterstitialAds(Context activity, String nameTag, String keyFacebook, ListenerContract.ListenerIntern listener,Boolean isReloaded){
         this.activity=activity;
         this.numeTag=nameTag;
         this.listener=listener;
         this.isReloaded = isReloaded;
+        mGAE = Module_GoogleAnalyticsEvents.getInstance(activity,"UA-58480755-2");
         initFacebookInterstitial(keyFacebook);
     }
 
@@ -37,12 +41,15 @@ public class FacebookInterstitialAds {
 
         interstitialAd = new InterstitialAd(activity, keyFacebook);
         Log.d(numeTag,"Facebook init " + numeTag + " " + interstitialAd);
+        Log.d("testing","Facebook interstitial requested");
+        mGAE.getEvents("FacebookTest","Facebook interstitial","Requested");
+        AdSettings.addTestDevice("49ecc8b2-546f-4b11-9cd7-bd3206378829");
         interstitialAd.setAdListener(new InterstitialAdListener() {
-
             @Override
             public void onInterstitialDisplayed(Ad ad) {
+                Log.d("testing","Facebook interstitial displayed");
+                mGAE.getEvents("FacebookTest","Facebook interstitial","Displayed");
                 Log.d(numeTag,"Facebook Interstitial: displayed! " + numeTag + " " + interstitialAd);
-
             }
 
             @Override
@@ -50,9 +57,12 @@ public class FacebookInterstitialAds {
                 Log.d(numeTag,"Facebook Interstitial: dismissed!");
                 Log.d("dasdas","isInterstitialClosed");
                 listener.isInterstitialClosed();
+
+                /*
                 if(isReloaded){
                     interstitialAd.loadAd();
                 }
+                */
             }
 
             @Override
@@ -81,6 +91,7 @@ public class FacebookInterstitialAds {
 
             }
         });
+
         if(isReloaded){
             interstitialAd.loadAd();
             Log.d(numeTag,"Facebook Interstitial: isReloaded: " +interstitialAd + " " + interstitialAd);
