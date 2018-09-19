@@ -126,7 +126,6 @@
     <string name="theme_name"></string>
 
     <string name="mother_packagename">com.smsplus.app</string>
-    <string name="analytics_traker_id">UA-100139395-1</string>
 
     <!-- Strings Layout 1234 -->
     <string name="advertisement_loading">Advertisement Loading</string>
