@@ -36,10 +36,9 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
         //managerInterstitialAds.initAdmob("ca-app-pub-3940256099942544/8691691433",false,this);
 
         //facebookInterstitialAds1 = managerInterstitialAds.initFacebook("223324501480181_4783806226412333",false,this);
-        facebookInterstitialAds1 = managerInterstitialAds.initFacebook("384109022042526_523676831419077",false,this);
-        //facebookInterstitialAds2 = managerInterstitialAds.initFacebook("223324501480181_478379819307980",false,this);
-
-        facebookInterstitialAds1.requestNewInterstitialFacebook();
+        //facebookInterstitialAds1 = managerInterstitialAds.initFacebook("384109022042526_523676831419077",false,this);
+        facebookInterstitialAds2 = managerInterstitialAds.initFacebook("223324501480181_478379819307980",true,this);
+        //facebookInterstitialAds1.requestNewInterstitialFacebook();
         // facebookInterstitialAds2.requestNewInterstitialFacebook();
 
         //managerInterstitialAds.initAppnext("aacbb73a-09b8-455d-b9d8-1d246d5a2cb4", false, this);
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
 
             //managerInterstitialAds.facebookInterstitialAdsInterstitial.showInterstitialFacebook();
         //managerInterstitialAds.showFacebook(facebookInterstitialAds1);
-        managerInterstitialAds.showInterstitial(this,facebookInterstitialAds1,true,"intro","Loading Wallpaper...",flow);
+        managerInterstitialAds.showInterstitial(this,facebookInterstitialAds2,false,"intro","Loading Wallpaper...",flow);
 
     }
 

@@ -80,7 +80,7 @@ public class AdmobInterstitialAds  {
             if(isReloaded){
                 requestNewInterstitialAdmob();
             }
-           // requestNewInterstitialAdmob();
+           requestNewInterstitialAdmob();
         }
 
     }

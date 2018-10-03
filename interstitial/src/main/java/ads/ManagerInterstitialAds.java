@@ -68,6 +68,7 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
             activity.startActivity(intent);
             requestNewInterstitial(facebookInterstitialAds);
         } else {
+            Log.d(tagName, "showInterstitial " + whatIsLoadedList.size()+" "+whatIsLoadedList);
             if (whatIsLoadedList.size() > 0) {
                 part1Interstitial();
             } else {
