@@ -14,18 +14,17 @@ import ads.ManagerInterstitialAds;
 import ads.interstitial.FacebookInterstitialAds;
 import ads.interstitial.SmartAd;
 import ads.interstitial.SmartAdInterstitial;
-import utill.LoadingProgressBarFacebook;
 
-public class MainActivity extends AppCompatActivity implements ListenerContract.AdsInterstitialListener, ListenerContract.NoAdsLoaded,SmartAdInterstitial.OnSmartAdInterstitialListener {
+public class MainActivity extends AppCompatActivity implements ListenerContract.AdsInterstitialListener, ListenerContract.NoAdsLoaded, SmartAdInterstitial.OnSmartAdInterstitialListener {
 
     private ManagerInterstitialAds managerInterstitialAds;
     private FacebookInterstitialAds facebookInterstitialAds1;
     private FacebookInterstitialAds facebookInterstitialAds2;
 
-    private List<String> flow = Arrays.asList("admob","appnext");
+    private List<String> flow = Arrays.asList("admob", "appnext");
     private boolean somethingIsLoaded;
     private boolean isReloaded;
-    private int nrAdsManagers=0;
+    private int nrAdsManagers = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,42 +49,37 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
 
         managerInterstitialAds.setInterstitialAdsListener(this);
         managerInterstitialAds.setNoAdsLoadedListener(this);
-       // managerInterstitialAds.setFlow(flow);
+        // managerInterstitialAds.setFlow(flow);
 
 
     }
 
     public void onClick(View view) {
-     //  managerInterstitialAds.requestNewInterstitial(this,flow,"intro");
-      //  managerInterstitialAds.showInterstitialLoading(this,false,5000,"intro","Loading Wallpaper...",flow);
-       // managerInterstitialAds.runAdds_Part2Interstitial();
+        //  managerInterstitialAds.requestNewInterstitial(this,flow,"intro");
+        //  managerInterstitialAds.showInterstitialLoading(this,false,5000,"intro","Loading Wallpaper...",flow);
+        // managerInterstitialAds.runAdds_Part2Interstitial();
 
-            //managerInterstitialAds.facebookInterstitialAdsInterstitial.showInterstitialFacebook();
+        //managerInterstitialAds.facebookInterstitialAdsInterstitial.showInterstitialFacebook();
         //managerInterstitialAds.showFacebook(facebookInterstitialAds1);
         //managerInterstitialAds.showInterstitial(this,facebookInterstitialAds2,false,"intro","Loading Wallpaper...",flow);
 
 
         SmartAd.addTestDevice(SmartAd.AD_TYPE_GOOGLE, "2184F858FFCDF534E26419F85B421D1F");
         SmartAd.addTestDevice(SmartAd.AD_TYPE_FACEBOOK, "739c076c-bda3-4c5a-a47f-4875542b79aa");
-        //Test mode device hash: 0b6d426f86e3d921cb483a300febbc76
 
-
-        //static public SmartAdInterstitial showAdWidthCallback(Context context, String googleID, String facebookID, final OnSmartAdInterstitialListener callback)
-
-        SmartAdInterstitial.showAd(MainActivity.this,
-                "ca-app-pub-5322508131338449/2877444211", "947881942088350_947883058754905",false, SmartAd.PLACEMENT_INTRO, "TEXT");
+        SmartAdInterstitial.showAd(MainActivity.this, null, "947881942088350_947883058754905", true, SmartAd.PLACEMENT_INTRO, "TEXT");
     }
 
 
     @Override
     public void afterInterstitialIsClosed(String action) {
-        switch (action){
+        switch (action) {
             case "intro":
-                somethingIsLoaded=false;
+                somethingIsLoaded = false;
                 startActivity(new Intent(this, Main2Activity.class));
                 break;
             case "intro2":
-                somethingIsLoaded=false;
+                somethingIsLoaded = false;
                 startActivity(new Intent(this, Main3Activity.class));
                 break;
 
@@ -95,8 +89,8 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
 
     @Override
     public void noAdsLoaded(String action) {
-        Log.d("qwqwq","noAdsLoaded: "+ action);
-        switch (action){
+        Log.d("qwqwq", "noAdsLoaded: " + action);
+        switch (action) {
             case "intro":
                 startActivity(new Intent(this, Main2Activity.class));
                 break;
@@ -105,13 +99,13 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
     }
 
     public void onClick2(View view) {
-       // facebookInterstitialAds2.showInterstitialFacebook();
-        managerInterstitialAds.showInterstitial(this,facebookInterstitialAds2,true,"intro2","Applying...",flow);
+        // facebookInterstitialAds2.showInterstitialFacebook();
+        managerInterstitialAds.showInterstitial(this, facebookInterstitialAds2, true, "intro2", "Applying...", flow);
     }
 
 
     public void onSmartAdInterstitialDone(int adType, int mPlacement) {
-        Log.d("InfoAds", "onSmartAdInterstitialDone " + adType+" "+mPlacement);
+        Log.d("InfoAds", "onSmartAdInterstitialDone " + adType + " " + mPlacement);
         switch (mPlacement) {
             case SmartAd.PLACEMENT_INTRO:
                 Log.d("InfoAds", "onSmartAdInterstitialDone PLACEMENT_INTRO");
@@ -120,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
     }
 
     public void onSmartAdInterstitialFail(int adType, int mPlacement) {
-        Log.d("InfoAds", "onSmartAdInterstitialFail " + adType+" "+mPlacement);
+        Log.d("InfoAds", "onSmartAdInterstitialFail " + adType + " " + mPlacement);
         switch (mPlacement) {
             case SmartAd.PLACEMENT_INTRO:
                 Log.d("InfoAds", "onSmartAdInterstitialFail PLACEMENT_INTRO");
@@ -131,6 +125,6 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
 
     public void onSmartAdInterstitialClose(int adType, int mPlacement) {
         //LoadingProgressBarFacebook.go.finish(); //to be used only if activity doesn't close
-        Log.d("InfoAds", "onSmartAdInterstitialClose " + adType+" "+mPlacement);
+        Log.d("InfoAds", "onSmartAdInterstitialClose " + adType + " " + mPlacement);
     }
 }
