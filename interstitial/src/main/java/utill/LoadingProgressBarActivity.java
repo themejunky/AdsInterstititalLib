@@ -1,5 +1,6 @@
 package utill;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ClipDrawable;
 import android.os.Bundle;
@@ -34,7 +35,7 @@ public class LoadingProgressBarActivity extends AppCompatActivity {
     private String stringAction;
     private TextView textLoading;
     private ManagerInterstitialAds managerInterstitialAds;
-
+    public static Activity go;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,8 @@ public class LoadingProgressBarActivity extends AppCompatActivity {
         ruunable();
         startThrad();
         thread.start();
-
+        go = this;
+        Log.d("testache","LoadingProgressBarActivity created");
     }
 
     private static void doTheUpAnimation(int toLevel) {
@@ -119,6 +121,7 @@ public class LoadingProgressBarActivity extends AppCompatActivity {
     public void setTextLoading() {
 
         if (progressBar.getProgress() == 98) {
+
             progressStatus = 0;
             toLevel = 0;
             finish();

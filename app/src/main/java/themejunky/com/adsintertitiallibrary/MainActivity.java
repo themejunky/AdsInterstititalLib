@@ -12,14 +12,17 @@ import java.util.List;
 import ads.ListenerContract;
 import ads.ManagerInterstitialAds;
 import ads.interstitial.FacebookInterstitialAds;
+import ads.interstitial.SmartAd;
+import ads.interstitial.SmartAdInterstitial;
+import utill.LoadingProgressBarFacebook;
 
-public class MainActivity extends AppCompatActivity implements ListenerContract.AdsInterstitialListener, ListenerContract.NoAdsLoaded {
+public class MainActivity extends AppCompatActivity implements ListenerContract.AdsInterstitialListener, ListenerContract.NoAdsLoaded,SmartAdInterstitial.OnSmartAdInterstitialListener {
 
-    public ManagerInterstitialAds managerInterstitialAds;
+    private ManagerInterstitialAds managerInterstitialAds;
     private FacebookInterstitialAds facebookInterstitialAds1;
     private FacebookInterstitialAds facebookInterstitialAds2;
 
-    private List<String> flow = Arrays.asList("facebook","admob","appnext");
+    private List<String> flow = Arrays.asList("admob","appnext");
     private boolean somethingIsLoaded;
     private boolean isReloaded;
     private int nrAdsManagers=0;
@@ -30,14 +33,14 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
         setContentView(R.layout.activity_main);
 
         managerInterstitialAds = new ManagerInterstitialAds();
-        managerInterstitialAds.setTagName("infoTagName");
+        managerInterstitialAds.setTagName("InfoAds");
 
         //managerInterstitialAds.initAdmob("ca-app-pub-5322508131338449/2877444211",false,this);
         //managerInterstitialAds.initAdmob("ca-app-pub-3940256099942544/8691691433",false,this);
 
         //facebookInterstitialAds1 = managerInterstitialAds.initFacebook("223324501480181_4783806226412333",false,this);
         //facebookInterstitialAds1 = managerInterstitialAds.initFacebook("384109022042526_523676831419077",false,this);
-        facebookInterstitialAds2 = managerInterstitialAds.initFacebook("223324501480181_478379819307980",true,this);
+        //facebookInterstitialAds2 = managerInterstitialAds.initFacebook("223324501480181_478379819307980",true,this);
         //facebookInterstitialAds1.requestNewInterstitialFacebook();
         // facebookInterstitialAds2.requestNewInterstitialFacebook();
 
@@ -59,8 +62,18 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
 
             //managerInterstitialAds.facebookInterstitialAdsInterstitial.showInterstitialFacebook();
         //managerInterstitialAds.showFacebook(facebookInterstitialAds1);
-        managerInterstitialAds.showInterstitial(this,facebookInterstitialAds2,false,"intro","Loading Wallpaper...",flow);
+        //managerInterstitialAds.showInterstitial(this,facebookInterstitialAds2,false,"intro","Loading Wallpaper...",flow);
 
+
+        SmartAd.addTestDevice(SmartAd.AD_TYPE_GOOGLE, "2184F858FFCDF534E26419F85B421D1F");
+        SmartAd.addTestDevice(SmartAd.AD_TYPE_FACEBOOK, "739c076c-bda3-4c5a-a47f-4875542b79aa");
+        //Test mode device hash: 0b6d426f86e3d921cb483a300febbc76
+
+
+        //static public SmartAdInterstitial showAdWidthCallback(Context context, String googleID, String facebookID, final OnSmartAdInterstitialListener callback)
+
+        SmartAdInterstitial.showAd(MainActivity.this,
+                "ca-app-pub-5322508131338449/2877444211", "947881942088350_947883058754905",false, SmartAd.PLACEMENT_INTRO, "TEXT");
     }
 
 
@@ -94,5 +107,30 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
     public void onClick2(View view) {
        // facebookInterstitialAds2.showInterstitialFacebook();
         managerInterstitialAds.showInterstitial(this,facebookInterstitialAds2,true,"intro2","Applying...",flow);
+    }
+
+
+    public void onSmartAdInterstitialDone(int adType, int mPlacement) {
+        Log.d("InfoAds", "onSmartAdInterstitialDone " + adType+" "+mPlacement);
+        switch (mPlacement) {
+            case SmartAd.PLACEMENT_INTRO:
+                Log.d("InfoAds", "onSmartAdInterstitialDone PLACEMENT_INTRO");
+                break;
+        }
+    }
+
+    public void onSmartAdInterstitialFail(int adType, int mPlacement) {
+        Log.d("InfoAds", "onSmartAdInterstitialFail " + adType+" "+mPlacement);
+        switch (mPlacement) {
+            case SmartAd.PLACEMENT_INTRO:
+                Log.d("InfoAds", "onSmartAdInterstitialFail PLACEMENT_INTRO");
+                break;
+        }
+    }
+
+
+    public void onSmartAdInterstitialClose(int adType, int mPlacement) {
+        //LoadingProgressBarFacebook.go.finish(); //to be used only if activity doesn't close
+        Log.d("InfoAds", "onSmartAdInterstitialClose " + adType+" "+mPlacement);
     }
 }

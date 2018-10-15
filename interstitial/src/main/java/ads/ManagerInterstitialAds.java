@@ -31,12 +31,9 @@ public class ManagerInterstitialAds extends AppCompatActivity implements Listene
     private String textLoading;
     private Activity activity;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         if (getIntent().getBooleanExtra("fromLoading", false)) {
             Log.d(tagName, "onCreate 1");
             finish();

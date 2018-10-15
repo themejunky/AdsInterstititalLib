@@ -50,4 +50,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation project(':interstitial')
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.facebook.android:audience-network-sdk:4.99.3'
+    //Admob
+    implementation "com.google.android.gms:play-services-ads:15.0.1"
 }

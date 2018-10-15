@@ -28,13 +28,11 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     //Facebook
-    implementation 'com.facebook.android:audience-network-sdk:4.99.1'
+    implementation 'com.facebook.android:audience-network-sdk:4.99.3'
     //Admob
     implementation "com.google.android.gms:play-services-ads:15.0.1"
     implementation 'com.google.android.gms:play-services-analytics:15.0.0'
-    //Progress Library
-    //implementation 'com.github.ybq:Android-SpinKit:1.1.0'
      //Appnext
-    implementation "com.appnext.sdk:ads:2.4.2.471.2"
+    implementation "com.appnext.sdk:ads:2.4.3.472"
 
 }
