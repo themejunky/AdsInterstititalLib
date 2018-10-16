@@ -80,7 +80,7 @@
     <string name = "tv_app_name_sms"> SMS Plus </string>
     <string name = "tv_app_name_paris"> Paris SMS </string>
     <string name = "tv_app_description"> Hermosa mensajería </string>
-    <string name = "theme_name"> </string>
+
 
 <!-- lwp -->
     <string name = "object_category"> Configuración del objeto </string>
