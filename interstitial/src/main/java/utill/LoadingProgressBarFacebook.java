@@ -36,7 +36,7 @@ public class LoadingProgressBarFacebook extends AppCompatActivity {
     private String stringLoading;
     private String stringAction;
     private TextView textLoading;
-    private boolean isBackPressed;
+    private static boolean isBackPressed;
     public static Activity go;
 
     public LoadingProgressBarFacebook() {
@@ -122,13 +122,19 @@ public class LoadingProgressBarFacebook extends AppCompatActivity {
         this.thread.interrupt();
     }
 
+    public static boolean userCanceledTheLoadingScreen(){
+        return isBackPressed;
+    }
+
     public void setTextLoading() {
         if(this.progressBar.getProgress() == 95) {
             Log.d("testache","setTextLoading 1");
             if ((mFacebookAd != null) && (mFacebookAd.isAdLoaded())) {
-                Log.d("testache","setTextLoading 2");
-                Log.d("testache","show fb!!!");
-                mFacebookAd.show();
+                if (!isBackPressed) {  //if user pressed back during loading screen, the ad is not shown
+                    Log.d("testache", "setTextLoading 2");
+                    Log.d("testache", "show fb!!!");
+                    mFacebookAd.show();
+                }
             }
             Log.d("testache","setTextLoading 3");
             progressStatus = 0;

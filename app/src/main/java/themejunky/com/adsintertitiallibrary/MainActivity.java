@@ -14,6 +14,7 @@ import ads.ManagerInterstitialAds;
 import ads.interstitial.FacebookInterstitialAds;
 import ads.interstitial.SmartAd;
 import ads.interstitial.SmartAdInterstitial;
+import utill.LoadingProgressBarFacebook;
 
 public class MainActivity extends AppCompatActivity implements ListenerContract.AdsInterstitialListener, ListenerContract.NoAdsLoaded, SmartAdInterstitial.OnSmartAdInterstitialListener {
 
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
 
     @Override
     public void noAdsLoaded(String action) {
-        Log.d("qwqwq", "noAdsLoaded: " + action);
+        Log.d("qwqwq", "noAdsLoaded: " + action+" ");
         switch (action) {
             case "intro":
                 startActivity(new Intent(this, Main2Activity.class));
