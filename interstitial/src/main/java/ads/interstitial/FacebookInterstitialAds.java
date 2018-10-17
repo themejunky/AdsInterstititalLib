@@ -39,7 +39,7 @@ public class FacebookInterstitialAds {
         interstitialAd = new InterstitialAd(activity, keyFacebook);
         Log.d(numeTag,"Facebook init " + numeTag + " " + interstitialAd);
         Log.d("testing","Facebook interstitial requested");
-        AdSettings.addTestDevice("49ecc8b2-546f-4b11-9cd7-bd3206378829");
+
         interstitialAd.setAdListener(new InterstitialAdListener() {
             @Override
             public void onInterstitialDisplayed(Ad ad) {

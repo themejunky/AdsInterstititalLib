@@ -190,7 +190,7 @@ public class SmartAdInterstitial implements com.facebook.ads.InterstitialAdListe
     private void loadFacebook() {
         if (mFacebookID != null) {
             if (mShowLoading) {
-                Log.d("testache","mShowLoading received twice "+mShowLoading);
+                Log.d("testache","mShowLoading received "+mShowLoading);
                 Intent intent = new Intent(mContext, LoadingProgressBarFacebook.class);
                 intent.putExtra("textLoading", mTitle);
                 mContext.startActivity(intent);

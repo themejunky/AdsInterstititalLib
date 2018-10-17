@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
         managerInterstitialAds = new ManagerInterstitialAds();
         managerInterstitialAds.setTagName("InfoAds");
 
-        //managerInterstitialAds.initAdmob("ca-app-pub-5322508131338449/2877444211",false,this);
-        //managerInterstitialAds.initAdmob("ca-app-pub-3940256099942544/8691691433",false,this);
+        //managerInterstitialAds.initAdmob("ca-app-pub-5322508131338449/2877444211",true,this);
+        managerInterstitialAds.initAdmob("ca-app-pub-3940256099942544/8691691433",false,this);
 
         //facebookInterstitialAds1 = managerInterstitialAds.initFacebook("223324501480181_4783806226412333",false,this);
         //facebookInterstitialAds1 = managerInterstitialAds.initFacebook("384109022042526_523676831419077",false,this);
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
         //facebookInterstitialAds1.requestNewInterstitialFacebook();
         // facebookInterstitialAds2.requestNewInterstitialFacebook();
 
-        //managerInterstitialAds.initAppnext("aacbb73a-09b8-455d-b9d8-1d246d5a2cb4", false, this);
+        managerInterstitialAds.initAppnext("aacbb73a-09b8-455d-b9d8-1d246d5a2cb4", false, this);
         //managerInterstitialAds.initAppnext("729ceb30-a78a-492f-950b-deec4d2fca0f", false, this);
         //managerInterstitialAds.initAppnext("8ce1a263-7a74-42b1-b209-80276c0fe971", false, this);
 
@@ -65,11 +65,15 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
 
 
         SmartAd.addTestDevice(SmartAd.AD_TYPE_GOOGLE, "2184F858FFCDF534E26419F85B421D1F");
-        SmartAd.addTestDevice(SmartAd.AD_TYPE_FACEBOOK, "739c076c-bda3-4c5a-a47f-4875542b79aa");
+        SmartAd.addTestDevice(SmartAd.AD_TYPE_FACEBOOK, "77f147bc-a6b9-4d32-a464-3e77c4c902ef");
 
         SmartAdInterstitial.showAd(MainActivity.this, null, "947881942088350_947883058754905", true, SmartAd.PLACEMENT_INTRO, "TEXT");
     }
 
+    public void onClick2(View view) {
+        // facebookInterstitialAds2.showInterstitialFacebook();
+        managerInterstitialAds.showInterstitial(this, facebookInterstitialAds2, true, "intro2", "Applying...", flow);
+    }
 
     @Override
     public void afterInterstitialIsClosed(String action) {
@@ -98,14 +102,9 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
         }
     }
 
-    public void onClick2(View view) {
-        // facebookInterstitialAds2.showInterstitialFacebook();
-        managerInterstitialAds.showInterstitial(this, facebookInterstitialAds2, true, "intro2", "Applying...", flow);
-    }
-
 
     public void onSmartAdInterstitialDone(int adType, int mPlacement) {
-        Log.d("InfoAds", "onSmartAdInterstitialDone " + adType + " " + mPlacement);
+        Log.d("qwqwq", "onSmartAdInterstitialDone " + adType + " " + mPlacement);
         switch (mPlacement) {
             case SmartAd.PLACEMENT_INTRO:
                 Log.d("InfoAds", "onSmartAdInterstitialDone PLACEMENT_INTRO");
@@ -114,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements ListenerContract.
     }
 
     public void onSmartAdInterstitialFail(int adType, int mPlacement) {
-        Log.d("InfoAds", "onSmartAdInterstitialFail " + adType + " " + mPlacement);
+        Log.d("qwqwq", "onSmartAdInterstitialFail " + adType + " " + mPlacement);
         switch (mPlacement) {
             case SmartAd.PLACEMENT_INTRO:
                 Log.d("InfoAds", "onSmartAdInterstitialFail PLACEMENT_INTRO");

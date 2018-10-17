@@ -84,7 +84,7 @@ public class LoadingProgressBarFacebook extends AppCompatActivity {
             progressStatus = 0;
             toLevel = 0;
             this.progressTrue = false;
-            finish();
+            this.finish();
         }
         return true;
     }
@@ -124,17 +124,18 @@ public class LoadingProgressBarFacebook extends AppCompatActivity {
 
     public void setTextLoading() {
         if(this.progressBar.getProgress() == 95) {
-
+            Log.d("testache","setTextLoading 1");
             if ((mFacebookAd != null) && (mFacebookAd.isAdLoaded())) {
+                Log.d("testache","setTextLoading 2");
                 Log.d("testache","show fb!!!");
                 mFacebookAd.show();
             }
-
+            Log.d("testache","setTextLoading 3");
             progressStatus = 0;
             toLevel = 0;
             this.progressTrue = false;
             this.finish();
-            //Log.d("testache","setTextLoading 4");
+            Log.d("testache","setTextLoading 4");
 /*        } else {
             if (Stuff.getAdFailedToLoad()){
                 Stuff.setAdFailedToLoad(false);
